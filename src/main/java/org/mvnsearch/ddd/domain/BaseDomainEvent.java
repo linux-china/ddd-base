@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * base domain event
+ * base domain event for entity or aggregate
  *
  * @author linux_china
  */
 @DomainEvent
-public class BaseDomainEvent<T> implements Serializable {
+public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
     protected Map<String, Object> context = new HashMap<String, Object>();
     protected T source;
 
