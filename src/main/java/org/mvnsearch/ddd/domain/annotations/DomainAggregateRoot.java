@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @author linux_china
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target({ElementType.METHOD, ElementType.FIELD})
 public @interface DomainAggregateRoot {
 
 }
