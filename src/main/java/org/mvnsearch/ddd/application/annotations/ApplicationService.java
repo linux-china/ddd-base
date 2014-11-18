@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.mvnsearch.ddd.application.annotations;
 
 import java.lang.annotation.ElementType;
