@@ -1,5 +1,6 @@
-package org.mvnsearch.ddd.domain;
+package org.mvnsearch.ddd.domain.events;
 
+import org.mvnsearch.ddd.domain.BaseEntity;
 import org.mvnsearch.ddd.domain.annotations.DomainEvent;
 
 import java.io.Serializable;
