@@ -1,0 +1,30 @@
+@startuml
+
+class BaseDomainEvent {
+  + Object source
+  + Date occuredAt
+  + Map context
+}
+
+class EventHandler {
+  + boolean canHandle(Object event);
+  + void handle(Object event);
+}
+
+class DomainEventDispatcher {
+ + void publish(BaseDomainEvent event)
+ + void register(EventHandler handler)
+}
+
+class DomainEventStore
+
+DomainEventDispatcher -down-> DomainEventStore: save
+DomainEventDispatcher <-up- DomainEventStore: get
+
+DomainEventDispatcher -up-* EventHandler: register
+
+DomainEventDispatcher ---> BaseDomainEvent: Publish
+
+EventHandler --> BaseDomainEvent: handle
+
+@enduml
