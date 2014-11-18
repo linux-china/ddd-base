@@ -1,0 +1,55 @@
+@startuml
+
+[Infrastructure] #Aqua
+[Shared]
+note left of Shared : XxxSupport, Utils
+
+package "model package" {
+   [Model] <<Domain>>
+   [Repository] <<Domain>>
+   [Factory] <<Domain>>
+}
+package "Logic Layer" {
+   [Service] <<Domain>>
+   [Event] <<Domain>>
+   [Application]
+   note right of Application : Facade,OpenAPI,\nRemote Service etc
+}
+
+package "App Layer" {
+    [WebApp] <<App>>
+    [MobileBackend] <<App>>
+    [Interface] <<App>>
+    [MobileApp] <<App>>
+}
+
+[Shared] --> [Infrastructure]
+[Repository] --> [Shared]
+[Repository] --> [Model]
+[Service] -[#0000FF]> [Repository]
+[Factory] --> [Model]
+[Event] -[#0000FF]> [Service]
+[Event] -[#0000FF]> [Repository]
+[Application] -[#0000FF]> [Repository]
+[Application] -[#0000FF]> [Service]
+[Application] -[#0000FF]> [Event]
+[Application] ....> [Infrastructure]
+[Application] ....> [Shared]
+
+[WebApp] ..> [Application]
+[WebApp] ..> [Service]
+[WebApp] ..> [Event]
+[Interface] --> [WebApp]
+[MobileBackend] ..> [Application]
+[MobileBackend] ..> [Service]
+[MobileBackend] ..> [Event]
+[MobileApp] --> [MobileBackend]
+
+skinparam component {
+  FontSize 13
+  BackgroundColor<<Domain>> gold
+  BackgroundColor<<App>> DarkKhaki
+  FontName Courier
+}
+
+@enduml
