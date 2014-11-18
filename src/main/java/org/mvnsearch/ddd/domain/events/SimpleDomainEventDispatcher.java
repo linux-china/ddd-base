@@ -16,6 +16,10 @@ public class SimpleDomainEventDispatcher implements DomainEventDispatcher {
     private static final Logger log = LoggerFactory.getLogger(SimpleDomainEventDispatcher.class);
     private Set<EventHandler> eventHandlers = new HashSet<EventHandler>();
 
+    public void setEventHandlers(Set<EventHandler> eventHandlers) {
+        this.eventHandlers = eventHandlers;
+    }
+
     /**
      * register event handler
      *
