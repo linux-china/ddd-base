@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * base domain event for entity or aggregate
@@ -21,14 +22,29 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
      * occured timestamp
      */
     private Date occuredAt;
+    /**
+     * uuid for event
+     */
+    private String timeuuid;
 
     public BaseDomainEvent() {
         this.occuredAt = new Date();
+        this.timeuuid = occuredAt.getTime() + "-" + UUID.randomUUID().toString();
     }
 
     public BaseDomainEvent(T source) {
         this.source = source;
         this.occuredAt = new Date();
+        this.timeuuid = occuredAt.getTime() + "-" + UUID.randomUUID().toString();
+    }
+
+    /**
+     * get event id
+     *
+     * @return event event id with timeuuid format
+     */
+    public String getId() {
+        return this.timeuuid;
     }
 
     public T getSource() {
