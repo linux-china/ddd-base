@@ -43,6 +43,10 @@
             <name>mvnsearch nexus Snapshots</name>
             <url>http://nexus.mvnsearch.org/content/repositories/snapshots/</url>
         </snapshotRepository>
+        <!-- <repository>
+             <id>bintray</id>
+             <url>https://api.bintray.com/maven/linux-china/maven/org.mvnsearch.ddd.ddd-base</url>
+         </repository>-->
     </distributionManagement>
 
     <dependencies>
@@ -58,4 +62,38 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
 </project>
