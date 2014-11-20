@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author linux_china
  */
-public interface BaseEntity<K extends Serializable> {
+public interface BaseEntity<K extends Serializable> extends Serializable{
     /**
      * get entity id
      *
