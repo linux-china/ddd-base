@@ -40,11 +40,4 @@ public interface BaseDomainEntity<K extends Serializable> extends BaseEntity<K> 
      * @param updatedAt updated timestamp
      */
     public void setUpdatedAt(Date updatedAt);
-
-    /**
-     * get entity status
-     *
-     * @return entity status
-     */
-    public Integer getStatus();
 }
