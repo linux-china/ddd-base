@@ -21,21 +21,21 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
     /**
      * occured timestamp
      */
-    private Date occuredAt;
+    private long occuredAt;
     /**
      * uuid for event
      */
     private String timeuuid;
 
     public BaseDomainEvent() {
-        this.occuredAt = new Date();
-        this.timeuuid = occuredAt.getTime() + "-" + UUID.randomUUID().toString();
+        this.occuredAt = System.currentTimeMillis();
+        this.timeuuid = occuredAt + "-" + UUID.randomUUID().toString();
     }
 
     public BaseDomainEvent(T source) {
         this.source = source;
-        this.occuredAt = new Date();
-        this.timeuuid = occuredAt.getTime() + "-" + UUID.randomUUID().toString();
+        this.occuredAt = System.currentTimeMillis();
+        this.timeuuid = occuredAt + "-" + UUID.randomUUID().toString();
     }
 
     /**
@@ -55,11 +55,11 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
         this.source = source;
     }
 
-    public Date getOccuredAt() {
+    public long getOccuredAt() {
         return occuredAt;
     }
 
-    public void setOccuredAt(Date occuredAt) {
+    public void setOccuredAt(long occuredAt) {
         this.occuredAt = occuredAt;
     }
 
