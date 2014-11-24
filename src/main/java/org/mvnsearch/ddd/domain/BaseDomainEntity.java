@@ -13,31 +13,5 @@ import java.util.Date;
 @DomainEntity
 public interface BaseDomainEntity<K extends Serializable> extends BaseEntity<K> {
 
-    /**
-     * get created timestamp
-     *
-     * @return created timestamp
-     */
-    public Date getCreatedAt();
 
-    /**
-     * set created timestamp
-     *
-     * @param createdAt created timestamp
-     */
-    public void setCreatedAt(Date createdAt);
-
-    /**
-     * get last updated timestamp
-     *
-     * @return last updated timestamp
-     */
-    public Date getUpdatedAt();
-
-    /**
-     * set updated timestamp
-     *
-     * @param updatedAt updated timestamp
-     */
-    public void setUpdatedAt(Date updatedAt);
 }
