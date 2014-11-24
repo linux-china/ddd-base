@@ -16,22 +16,30 @@ import java.util.UUID;
 @DomainEvent
 public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
     protected Map<String, Object> context = new HashMap<String, Object>();
+    /**
+     * uuid for event
+     */
+    protected String id;
+    /**
+     * event type
+     */
+    protected String type;
+    /**
+     * source
+     */
     protected T source;
     /**
      * occurred timestamp
      */
-    private long occurredOn;
-    /**
-     * uuid for event
-     */
-    private String id;
+    protected long occurredOn;
 
     public BaseDomainEvent() {
         this.occurredOn = System.currentTimeMillis();
         this.id = occurredOn + "-" + UUID.randomUUID().toString();
     }
 
-    public BaseDomainEvent(T source) {
+    public BaseDomainEvent(String type, T source) {
+        this.type = type;
         this.source = source;
         this.occurredOn = System.currentTimeMillis();
         this.id = occurredOn + "-" + UUID.randomUUID().toString();
@@ -44,6 +52,14 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
      */
     public String getId() {
         return this.id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public T getSource() {
