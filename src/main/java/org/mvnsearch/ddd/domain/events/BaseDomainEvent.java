@@ -4,7 +4,6 @@ import org.mvnsearch.ddd.domain.BaseEntity;
 import org.mvnsearch.ddd.domain.annotations.DomainEvent;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -19,23 +18,23 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
     protected Map<String, Object> context = new HashMap<String, Object>();
     protected T source;
     /**
-     * occured timestamp
+     * occurred timestamp
      */
-    private long occuredAt;
+    private long occurredOn;
     /**
      * uuid for event
      */
-    private String timeuuid;
+    private String id;
 
     public BaseDomainEvent() {
-        this.occuredAt = System.currentTimeMillis();
-        this.timeuuid = occuredAt + "-" + UUID.randomUUID().toString();
+        this.occurredOn = System.currentTimeMillis();
+        this.id = occurredOn + "-" + UUID.randomUUID().toString();
     }
 
     public BaseDomainEvent(T source) {
         this.source = source;
-        this.occuredAt = System.currentTimeMillis();
-        this.timeuuid = occuredAt + "-" + UUID.randomUUID().toString();
+        this.occurredOn = System.currentTimeMillis();
+        this.id = occurredOn + "-" + UUID.randomUUID().toString();
     }
 
     /**
@@ -44,7 +43,7 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
      * @return event event id with timeuuid format
      */
     public String getId() {
-        return this.timeuuid;
+        return this.id;
     }
 
     public T getSource() {
@@ -55,12 +54,12 @@ public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
         this.source = source;
     }
 
-    public long getOccuredAt() {
-        return occuredAt;
+    public long getOccurredOn() {
+        return occurredOn;
     }
 
-    public void setOccuredAt(long occuredAt) {
-        this.occuredAt = occuredAt;
+    public void setOccurredOn(long occurredOn) {
+        this.occurredOn = occurredOn;
     }
 
     public Object getAttribute(String name) {
