@@ -18,8 +18,8 @@ package "Logic Layer" {
 }
 
 package "SOA Client" {
-   [OpenService]
-   note right of OpenService : models, open service api
+   [XxxClient] -> [PublishedService]
+   note right of PublishedService : models, open service api
 }
 
 package "App Layer" {
@@ -45,11 +45,11 @@ package "App Layer" {
 [Application] ....> [Infrastructure]
 [Application] ....> [Shared]
 
-[OpenService] ..> [Application]: RPC
+[PublishedService] ..> [Application]: RPC
 
-[WebApp] ..> [OpenService]
+[WebApp] ..> [XxxClient]
 [Interface] --> [WebApp]
-[MobileBackend] ..> [OpenService]
+[MobileBackend] ..> [XxxClient]
 [MobileApp] --> [MobileBackend]
 
 skinparam component {
