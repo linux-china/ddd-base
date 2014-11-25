@@ -34,6 +34,7 @@ package "App Layer" {
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
 [Service] -[#0000FF]> [Policy]
+[Policy] -[#0000FF]> [Repository]
 [Factory] --> [Model]
 [Event] -[#0000FF]> [Service]
 [Event] -[#0000FF]> [Repository]
