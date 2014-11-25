@@ -13,7 +13,12 @@ package "Logic Layer" {
    [Service] <<Domain>>
    [Event] <<Domain>>
    [Application]
-   note right of Application : Facade,OpenAPI,\nRemote Service etc
+   note right of Application : open service\nimplementation and deploy
+}
+
+package "SOA Client" {
+   [OpenService]
+   note right of OpenService : models, open service api
 }
 
 package "App Layer" {
@@ -36,13 +41,11 @@ package "App Layer" {
 [Application] ....> [Infrastructure]
 [Application] ....> [Shared]
 
-[WebApp] ..> [Application]
-[WebApp] ..> [Service]
-[WebApp] ..> [Event]
+[OpenService] ..> [Application]
+
+[WebApp] ..> [OpenService]
 [Interface] --> [WebApp]
-[MobileBackend] ..> [Application]
-[MobileBackend] ..> [Service]
-[MobileBackend] ..> [Event]
+[MobileBackend] ..> [OpenService]
 [MobileApp] --> [MobileBackend]
 
 skinparam component {
