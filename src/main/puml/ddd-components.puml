@@ -12,6 +12,7 @@ package "model package" {
 package "Logic Layer" {
    [Service] <<Domain>>
    [Event] <<Domain>>
+   [Policy] <<Domain>>
    [Application]
    note right of Application : Facade,utils,remote service
 }
@@ -27,12 +28,15 @@ package "App Layer" {
 [Repository] --> [Shared]
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
+[Service] -[#0000FF]> [Policy]
+[Service] -[#0000FF]> [Event]
+[Policy] -[#0000FF]> [Repository]
 [Factory] --> [Model]
-[Event] -[#0000FF]> [Service]
 [Event] -[#0000FF]> [Repository]
 [Application] -[#0000FF]> [Repository]
 [Application] -[#0000FF]> [Service]
 [Application] -[#0000FF]> [Event]
+[Application] -[#0000FF]> [Policy]
 [Application] ....> [Infrastructure]
 [Application] ....> [Shared]
 
