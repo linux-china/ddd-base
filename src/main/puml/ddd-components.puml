@@ -1,23 +1,28 @@
 @startuml
 
-[Infrastructure] #Aqua
-[Shared]
-note left of Shared : XxxSupport, Utils
 
-package "model package" {
-   [Model] <<Domain>>
-   [Repository] <<Domain>>
-   [Factory] <<Domain>>
-}
-package "Logic Layer" {
+node "Domain Module" {
+   package "model package" {
+       [Model] <<Domain>>
+       [Repository] <<Domain>>
+       [Factory] <<Domain>>
+    }
    [Service] <<Domain>>
    [Event] <<Domain>>
    [Policy] <<Domain>>
-   [Application]
-   note right of Application : Facade,utils,remote service
+   [Shared]
+   note right of Shared : XxxSupport, Wrapper
+
+   package "application package" {
+        [Application]
+        note left of Application : published service implementation
+   }
+   package "infrastructure package" {
+        [Infrastructure] #Aqua
+   }
 }
 
-package "App Layer" {
+cloud "App Modules" {
     [WebApp] <<App>>
     [MobileBackend] <<App>>
     [Interface] <<App>>
@@ -25,28 +30,24 @@ package "App Layer" {
 }
 
 [Shared] --> [Infrastructure]
-[Repository] --> [Shared]
+[Repository] ---> [Shared]
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
+[Service] -[#0000FF]> [Factory]
 [Service] -[#0000FF]> [Policy]
-[Service] -[#0000FF]> [Event]
+[Service] <-[#0000FF]> [Event]
 [Policy] -[#0000FF]> [Repository]
 [Factory] --> [Model]
+[Factory] ---> [Shared]
 [Event] -[#0000FF]> [Repository]
-[Application] -[#0000FF]> [Repository]
+[Event] -[#0000FF]> [Factory]
 [Application] -[#0000FF]> [Service]
 [Application] -[#0000FF]> [Event]
 [Application] -[#0000FF]> [Policy]
-[Application] ....> [Infrastructure]
-[Application] ....> [Shared]
 
-[WebApp] ..> [Application]
-[WebApp] ..> [Service]
-[WebApp] ..> [Event]
+[WebApp] ...> [Application]
 [Interface] --> [WebApp]
-[MobileBackend] ..> [Application]
-[MobileBackend] ..> [Service]
-[MobileBackend] ..> [Event]
+[MobileBackend] ...> [Application]
 [MobileApp] --> [MobileBackend]
 
 skinparam component {
