@@ -11,11 +11,11 @@ node "Domain Module" {
    [Event] <<Domain>>
    [Policy] <<Domain>>
    [Shared]
-   note right of Shared : XxxSupport, Wrapper
+   note right of Shared : XxxSupport\nWrapper\nSpring Integration
 
    package "application package" {
         [Application]
-        note left of Application : published service implementation
+        note left of Application : utils,spring
    }
    package "infrastructure package" {
         [Infrastructure] #Aqua
