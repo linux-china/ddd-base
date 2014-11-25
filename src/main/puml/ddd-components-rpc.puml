@@ -18,6 +18,7 @@ package "Logic Layer" {
 }
 
 package "SOA Client" {
+   [XxxClient] #99FF99
    [XxxClient] -> [PublishedService]
    note right of PublishedService : models, open service api
 }
