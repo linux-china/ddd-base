@@ -1,0 +1,39 @@
+@startuml
+
+package "domain" {
+  package "model" {
+     package "account" {
+     }
+  }
+  package "factory" {
+  }
+
+  package "event" {
+
+  }
+
+  package "shared" {
+  }
+
+  package "service" {
+  }
+
+  package "policy" {
+  }
+
+  package "application" {
+  }
+
+  package "open" {
+  }
+}
+
+package "infrastructure" {
+   package "cache"
+   package "db"
+   package "email"
+   package "rpc"
+}
+
+
+@enduml
