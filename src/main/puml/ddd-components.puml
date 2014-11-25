@@ -41,7 +41,7 @@ package "App Layer" {
 [Application] ....> [Infrastructure]
 [Application] ....> [Shared]
 
-[OpenService] ..> [Application]
+[OpenService] ..> [Application]: RPC
 
 [WebApp] ..> [OpenService]
 [Interface] --> [WebApp]
