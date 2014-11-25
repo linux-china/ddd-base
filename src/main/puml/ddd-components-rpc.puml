@@ -1,29 +1,39 @@
 @startuml
 
-[Infrastructure] #Aqua
-[Shared]
-note left of Shared : XxxSupport, Utils
-
-package "model package" {
-   [Model] <<Domain>>
-   [Repository] <<Domain>>
-   [Factory] <<Domain>>
+node "domain module" {
+    package "domain package"  {
+        package "model" {
+           [Model] <<Domain>>
+           [Repository] <<Domain>>
+           [Factory] <<Domain>>
+        }
+       [Shared]
+        note right of Shared : XxxSupport, Wrapper
+       [Service] <<Domain>>
+       [Event] <<Domain>>
+       [Policy] <<Domain>>
+    }
+    package "application package" {
+      [Application]
+      note right of Application : published service implementation
+    }
+    package "infrastructure package" {
+      [Infrastructure] #Aqua
+    }
 }
-package "Logic Layer" {
-   [Service] <<Domain>>
-   [Event] <<Domain>>
-   [Policy] <<Domain>>
-   [Application]
-   note right of Application : open service\nimplementation and deploy
-}
+package "Published Service Module" {
+   [PublishedService]
+   note right of PublishedService : models\npublished service api
 
-package "SOA Client" {
+}
+package "Client Module" {
    [XxxClient] #99FF99
+   note right of XxxClient : DSL\nSpring Support\nException Handler
+
    [XxxClient] -> [PublishedService]
-   note right of PublishedService : models, open service api
 }
 
-package "App Layer" {
+cloud "App Modules" {
     [WebApp] <<App>>
     [MobileBackend] <<App>>
     [Interface] <<App>>
@@ -31,20 +41,21 @@ package "App Layer" {
 }
 
 [Shared] --> [Infrastructure]
-[Repository] --> [Shared]
+[Repository] ---> [Shared]
 [Repository] --> [Model]
+[Factory] ---> [Shared]
+[Service] -[#0000FF]> [Factory]
 [Service] -[#0000FF]> [Repository]
 [Service] -[#0000FF]> [Policy]
 [Policy] -[#0000FF]> [Repository]
 [Factory] --> [Model]
-[Event] -[#0000FF]> [Service]
+[Event] -[#0000FF]> [Factory]
+[Event] <-[#0000FF]> [Service]
 [Event] -[#0000FF]> [Repository]
-[Application] -[#0000FF]> [Repository]
-[Application] -[#0000FF]> [Service]
-[Application] -[#0000FF]> [Event]
-[Application] -[#0000FF]> [Policy]
-[Application] ....> [Infrastructure]
-[Application] ....> [Shared]
+
+[Application] -[#0000FF]-> [Service]
+[Application] -[#0000FF]-> [Event]
+[Application] -[#0000FF]-> [Policy]
 
 [PublishedService] ..> [Application]: RPC
 
