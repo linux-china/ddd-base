@@ -58,6 +58,7 @@ cloud "App Modules" {
 [Application] -[#0000FF]-> [Policy]
 
 [PublishedService] ..> [Application]: RPC
+[PublishedService] <-- [Application]: Maven dependency
 
 [WebApp] ..> [XxxClient]
 [Interface] --> [WebApp]
