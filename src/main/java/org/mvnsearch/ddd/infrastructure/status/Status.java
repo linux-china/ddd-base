@@ -1,4 +1,4 @@
-package org.mvnsearch.ddd.infrastructure;
+package org.mvnsearch.ddd.infrastructure.status;
 
 /**
  * Value object to express state of a service

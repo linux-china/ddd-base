@@ -1,4 +1,4 @@
-package org.mvnsearch.ddd.infrastructure;
+package org.mvnsearch.ddd.infrastructure.status;
 
 /**
  * Strategy interface used to provide an indication of service health.

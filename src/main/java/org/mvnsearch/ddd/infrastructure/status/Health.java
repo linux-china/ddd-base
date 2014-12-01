@@ -1,4 +1,4 @@
-package org.mvnsearch.ddd.infrastructure;
+package org.mvnsearch.ddd.infrastructure.status;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
