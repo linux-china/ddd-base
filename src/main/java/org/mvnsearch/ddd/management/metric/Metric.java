@@ -1,4 +1,4 @@
-package org.mvnsearch.ddd.infrastructure.metric;
+package org.mvnsearch.ddd.management.metric;
 
 import java.util.Date;
 
