@@ -7,7 +7,7 @@ import java.util.Collection;
  *
  * @author Dave Syer
  */
-public interface PublicMetrics {
+public interface MetricsProvider {
 
     /**
      * @return an indication of current state through metrics
