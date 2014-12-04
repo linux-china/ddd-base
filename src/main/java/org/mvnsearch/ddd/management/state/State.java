@@ -1,7 +1,7 @@
 package org.mvnsearch.ddd.management.state;
 
 /**
- * service state
+ * service state for basic lifecycle control
  *
  * @author linux_china
  */
