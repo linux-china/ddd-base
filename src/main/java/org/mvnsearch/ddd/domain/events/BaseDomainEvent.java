@@ -1,6 +1,6 @@
 package org.mvnsearch.ddd.domain.events;
 
-import org.mvnsearch.ddd.domain.BaseEntity;
+import org.mvnsearch.ddd.domain.BaseModel;
 import org.mvnsearch.ddd.domain.annotations.DomainEvent;
 
 import java.io.Serializable;
@@ -14,7 +14,7 @@ import java.util.UUID;
  * @author linux_china
  */
 @DomainEvent
-public class BaseDomainEvent<T extends BaseEntity> implements Serializable {
+public class BaseDomainEvent<T extends BaseModel> implements Serializable {
     protected Map<String, Object> context = new HashMap<String, Object>();
     /**
      * uuid for event
