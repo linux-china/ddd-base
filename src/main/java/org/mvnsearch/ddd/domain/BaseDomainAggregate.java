@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author linux_china
  */
 @DomainAggregate
-public abstract class BaseDomainAggregate<K extends Serializable> implements BaseEntity<K> {
+public abstract class BaseDomainAggregate<K extends Serializable> implements BaseModel {
     /**
      * get aggregate root
      *
@@ -18,6 +18,11 @@ public abstract class BaseDomainAggregate<K extends Serializable> implements Bas
      */
     public abstract K getRoot();
 
+    /**
+     * get entity id
+     *
+     * @return entity id
+     */
     public K getId() {
         return getRoot();
     }
