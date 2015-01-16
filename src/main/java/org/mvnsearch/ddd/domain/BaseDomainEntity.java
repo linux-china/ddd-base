@@ -11,7 +11,11 @@ import java.util.Date;
  * @author linux_china
  */
 @DomainEntity
-public interface BaseDomainEntity<K extends Serializable> extends BaseEntity<K> {
-
-
+public interface BaseDomainEntity<K extends Serializable> extends BaseModel {
+    /**
+     * get entity id
+     *
+     * @return entity id
+     */
+    public K getId();
 }
