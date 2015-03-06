@@ -1,8 +1,29 @@
 @startuml
 
+package "openApi1" {
+   package idl1 {
+
+   }
+}
+
+package "openApi2" {
+   package idl2 {
+
+   }
+}
+
+package "client" {
+
+}
+package "application" {
+   package "appServiceImpl" {
+   }
+}
+
 package "domain" {
   package "model" {
      package "account" {
+
      }
   }
   package "factory" {
@@ -21,11 +42,6 @@ package "domain" {
   package "policy" {
   }
 
-  package "application" {
-  }
-
-  package "open" {
-  }
 }
 
 package "infrastructure" {
@@ -33,7 +49,14 @@ package "infrastructure" {
    package "db"
    package "email"
    package "rpc"
+   package "domainImpl"
 }
 
+infrastructure --up-> domain
+application --down-> domain
+application --up-> openApi1
+
+client ---> openApi1
+client ---> openApi2
 
 @enduml
