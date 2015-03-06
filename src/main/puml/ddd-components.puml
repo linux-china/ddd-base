@@ -19,6 +19,8 @@ node "Domain Module" {
    }
    package "infrastructure package" {
         [Infrastructure] #Aqua
+        [DomainImpl] #Aqua
+        [DomainImpl] -> [Infrastructure]
    }
 }
 
@@ -29,7 +31,7 @@ cloud "App Modules" {
     [MobileApp] <<App>>
 }
 
-[Shared] --> [Infrastructure]
+[Shared] <-- [DomainImpl]
 [Repository] ---> [Shared]
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
