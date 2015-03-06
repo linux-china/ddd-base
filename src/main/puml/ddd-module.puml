@@ -55,6 +55,7 @@ package "infrastructure" {
 infrastructure --up-> domain
 application --down-> domain
 application --up-> openApi1
+domain --> openApi1
 
 client ---> openApi1
 client ---> openApi2
