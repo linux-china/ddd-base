@@ -15,7 +15,10 @@ import java.util.UUID;
  */
 @DomainEvent
 public class BaseDomainEvent<T extends BaseModel> implements Serializable {
-    protected Map<String, Object> context = new HashMap<String, Object>();
+    /**
+     * event context
+     */
+    protected Map<String, Object> context;
     /**
      * uuid for event
      */
@@ -79,10 +82,13 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
     }
 
     public Object getAttribute(String name) {
-        return context.get(name);
+        return context == null ? null : context.get(name);
     }
 
     public void setAttribute(String name, Object value) {
+        if (context == null) {
+            context = new HashMap<String, Object>();
+        }
         this.context.put(name, value);
     }
 }
