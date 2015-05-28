@@ -6,13 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * event listener annotation
+ * domain event listener annotation
  *
  * @author linux_china
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
-public @interface EventListener {
+public @interface DomainEventListener {
 
     boolean asynchronous() default false;
 
