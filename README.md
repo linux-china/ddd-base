@@ -7,5 +7,6 @@ Domain Driven Design base package for Java.
 
 * annotations
 * base classes for entity, domain event etc
-* XxxSupport
+* XxxSupport: metrics 
+* domain event: domain event, dispatcher, handler
 
