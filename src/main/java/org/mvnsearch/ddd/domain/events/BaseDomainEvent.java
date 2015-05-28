@@ -15,6 +15,9 @@ import java.util.UUID;
  */
 @DomainEvent
 public class BaseDomainEvent<T extends BaseModel> implements Serializable {
+    public static String CREATED = "created";
+    public static String CHANGED = "changed";
+    public static String DELETED = "deleted";
     /**
      * event context
      */
