@@ -20,10 +20,6 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
      */
     protected Map<String, Object> context;
     /**
-     * uuid for event
-     */
-    protected String id;
-    /**
      * event type
      */
     protected String type;
@@ -38,23 +34,12 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
 
     public BaseDomainEvent() {
         this.occurredOn = System.currentTimeMillis();
-        this.id = occurredOn + "-" + UUID.randomUUID().toString();
     }
 
     public BaseDomainEvent(String type, T source) {
         this.type = type;
         this.source = source;
         this.occurredOn = System.currentTimeMillis();
-        this.id = occurredOn + "-" + UUID.randomUUID().toString();
-    }
-
-    /**
-     * get event id
-     *
-     * @return event event id with timeuuid format
-     */
-    public String getId() {
-        return this.id;
     }
 
     public String getType() {
