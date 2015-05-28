@@ -18,6 +18,6 @@ public interface DomainEventDispatcher {
      *
      * @param handler event handler
      */
-    public void registerEventHandler(EventHandler handler);
+    public void registerEventHandler(DomainEventHandler handler);
 
 }

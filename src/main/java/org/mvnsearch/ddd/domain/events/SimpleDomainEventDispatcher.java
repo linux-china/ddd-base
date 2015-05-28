@@ -14,9 +14,9 @@ import java.util.Set;
  */
 public class SimpleDomainEventDispatcher implements DomainEventDispatcher {
     private static final Logger log = LoggerFactory.getLogger(SimpleDomainEventDispatcher.class);
-    private Set<EventHandler> eventHandlers = new HashSet<EventHandler>();
+    private Set<DomainEventHandler> eventHandlers = new HashSet<DomainEventHandler>();
 
-    public void setEventHandlers(Set<EventHandler> eventHandlers) {
+    public void setEventHandlers(Set<DomainEventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
     }
 
@@ -25,7 +25,7 @@ public class SimpleDomainEventDispatcher implements DomainEventDispatcher {
      *
      * @param handler event handler
      */
-    public void registerEventHandler(EventHandler handler) {
+    public void registerEventHandler(DomainEventHandler handler) {
         eventHandlers.add(handler);
     }
 
@@ -44,7 +44,7 @@ public class SimpleDomainEventDispatcher implements DomainEventDispatcher {
      * @param event domain event
      */
     protected void doPublish(BaseDomainEvent event) {
-        for (EventHandler handler : new ArrayList<EventHandler>(eventHandlers)) {
+        for (DomainEventHandler handler : new ArrayList<DomainEventHandler>(eventHandlers)) {
             if (handler.canHandle(event)) {
                 try {
                     handler.handle(event);

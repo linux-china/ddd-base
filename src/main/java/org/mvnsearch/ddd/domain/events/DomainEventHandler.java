@@ -1,11 +1,11 @@
 package org.mvnsearch.ddd.domain.events;
 
 /**
- * event handler
+ * domain event handler
  *
  * @author linux_china
  */
-public interface EventHandler {
+public interface DomainEventHandler {
 
     /**
      * can handle event indication
