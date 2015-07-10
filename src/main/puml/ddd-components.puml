@@ -32,6 +32,7 @@ cloud "App Modules" {
 }
 
 [Shared] <-- [DomainImpl]
+[Application] <--- [DomainImpl]
 [Repository] ---> [Shared]
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
