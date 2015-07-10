@@ -19,7 +19,7 @@ node "Domain Module" {
    }
    package "infrastructure package" {
         [Infrastructure] #Aqua
-        [DomainImpl] #Aqua
+        [DomainImpl] <<Domain>>
         [DomainImpl] -> [Infrastructure]
    }
 }
