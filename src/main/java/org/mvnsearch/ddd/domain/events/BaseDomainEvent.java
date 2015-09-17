@@ -34,10 +34,7 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
      * occurred timestamp
      */
     protected long occurredOn;
-    /**
-     * event status
-     */
-    private Integer status;
+
 
     public BaseDomainEvent() {
         this.occurredOn = System.currentTimeMillis();
@@ -71,14 +68,6 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
 
     public void setOccurredOn(long occurredOn) {
         this.occurredOn = occurredOn;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Object getAttribute(String name) {
