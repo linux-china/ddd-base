@@ -35,6 +35,11 @@ public class BaseDomainEvent<T> implements Serializable {
         this.timestamp = System.currentTimeMillis();
     }
 
+    public BaseDomainEvent(Object source) {
+        this.source = source;
+        this.timestamp = System.currentTimeMillis();
+    }
+
     public BaseDomainEvent(Object source, T payload) {
         this.source = source;
         this.payload = payload;
