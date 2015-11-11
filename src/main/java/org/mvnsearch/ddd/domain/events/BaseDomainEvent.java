@@ -31,6 +31,7 @@ public class BaseDomainEvent<T> implements Serializable {
      */
     private final long timestamp;
 
+
     public BaseDomainEvent() {
         this.timestamp = System.currentTimeMillis();
     }
