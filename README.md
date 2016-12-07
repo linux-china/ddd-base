@@ -5,9 +5,10 @@ Domain Driven Design base package for Java.
 
 ### Features
 
-* annotations
+* Annotations
 * base classes for entity, domain event etc
 * domain event
+* spring annotation integration???
 
 
 ### event sourcing
