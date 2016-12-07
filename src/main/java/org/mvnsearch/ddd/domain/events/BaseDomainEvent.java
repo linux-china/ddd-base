@@ -19,6 +19,10 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
     public static String CHANGED = "changed";
     public static String DELETED = "deleted";
     /**
+     * ID
+     */
+    private UUID id = UUID.randomUUID();
+    /**
      * event context
      */
     protected Map<String, Object> context;
