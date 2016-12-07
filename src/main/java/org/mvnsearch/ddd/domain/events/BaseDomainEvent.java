@@ -1,85 +1,70 @@
 package org.mvnsearch.ddd.domain.events;
 
-import org.mvnsearch.ddd.domain.BaseModel;
 import org.mvnsearch.ddd.domain.annotations.DomainEvent;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
- * base domain event for entity or aggregate
+ * domain event
  *
  * @author linux_china
  */
 @DomainEvent
-public class BaseDomainEvent<T extends BaseModel> implements Serializable {
-    public static String CREATED = "created";
-    public static String CHANGED = "changed";
-    public static String DELETED = "deleted";
-    /**
-     * ID
-     */
-    private String id = UUID.randomUUID().toString();
+public class BaseDomainEvent<T> implements Serializable {
+    private static final long serialVersionUID = 5516075349620653482L;
     /**
      * event context
      */
     protected Map<String, Object> context;
     /**
-     * event type
-     */
-    protected String type;
-    /**
      * source
      */
-    protected T source;
+    protected transient Object source;
     /**
-     * occurred timestamp
+     * payload
      */
-    protected long occurredOn;
+    protected T payload;
+    /**
+     * System time when the event happened
+     */
+    private final long timestamp;
 
 
     public BaseDomainEvent() {
-        this.occurredOn = System.currentTimeMillis();
+        this.timestamp = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(String type, T source) {
-        this.type = type;
+    public BaseDomainEvent(Object source) {
         this.source = source;
-        this.occurredOn = System.currentTimeMillis();
+        this.timestamp = System.currentTimeMillis();
     }
 
-    public String getId() {
-        return id;
+    public BaseDomainEvent(Object source, T payload) {
+        this.source = source;
+        this.payload = payload;
+        this.timestamp = System.currentTimeMillis();
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public T getSource() {
+    public Object getSource() {
         return source;
     }
 
-    public void setSource(T source) {
+    public void setSource(Object source) {
         this.source = source;
     }
 
-    public long getOccurredOn() {
-        return occurredOn;
+    public T getPayload() {
+        return payload;
     }
 
-    public void setOccurredOn(long occurredOn) {
-        this.occurredOn = occurredOn;
+    public void setPayload(T payload) {
+        this.payload = payload;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 
     public Object getAttribute(String name) {
