@@ -17,6 +17,10 @@ Domain Driven Design base package for Java.
 * Event
 * Infrasturcture
 
+### Code Structure
+
+Please visit src/test/java for code structure
+
 ### event sourcing
 
 Please extends BaseDomainEvent and use ApplicationEventPublisher to publish event.
