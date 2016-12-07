@@ -98,7 +98,7 @@ public class BaseDomainEvent<T> implements Serializable {
 
     public void setAttribute(String name, Object value) {
         if (context == null) {
-            context = new HashMap<String, Object>();
+            context = new HashMap<>();
         }
         this.context.put(name, value);
     }
