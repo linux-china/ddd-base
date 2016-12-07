@@ -10,6 +10,12 @@ Domain Driven Design base package for Java.
 * domain event
 * spring annotation integration???
 
+### Components
+
+* Data: Entity, VO and Aggregate
+* Behaviour: Repository, Service, Factory and Specification
+* Event
+* Infrasturcture
 
 ### event sourcing
 
