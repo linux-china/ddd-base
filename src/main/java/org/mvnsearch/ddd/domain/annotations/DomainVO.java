@@ -6,12 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * value object annotation
+ * domain value object annotation
  *
  * @author linux_china
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ValueObject {
+public @interface DomainVO {
 
 }
