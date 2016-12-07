@@ -21,7 +21,7 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
     /**
      * ID
      */
-    private UUID id = UUID.randomUUID();
+    private String id = UUID.randomUUID().toString();
     /**
      * event context
      */
@@ -48,6 +48,14 @@ public class BaseDomainEvent<T extends BaseModel> implements Serializable {
         this.type = type;
         this.source = source;
         this.occurredOn = System.currentTimeMillis();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getType() {
