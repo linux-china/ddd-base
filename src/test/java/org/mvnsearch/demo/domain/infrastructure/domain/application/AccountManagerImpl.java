@@ -1,6 +1,6 @@
 package org.mvnsearch.demo.domain.infrastructure.domain.application;
 
-import org.mvnsearch.demo.domain.application.ApplicationManager;
+import org.mvnsearch.demo.domain.application.AccountManager;
 import org.mvnsearch.demo.domain.model.Account;
 
 /**
@@ -8,7 +8,7 @@ import org.mvnsearch.demo.domain.model.Account;
  *
  * @author linux_china
  */
-public class ApplicationManagerImpl implements ApplicationManager {
+public class AccountManagerImpl implements AccountManager {
 
     public Account findByEmail(String email) {
         return null;
