@@ -1,5 +1,7 @@
 package org.mvnsearch.demo.domain.infrastructure;
 
+import org.mvnsearch.ddd.infrastructure.annotations.InfrastructureService;
+
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -8,6 +10,7 @@ import java.util.Optional;
  *
  * @author linux_china
  */
+@InfrastructureService
 public interface CacheService {
 
     public void put(String key, Serializable object);
