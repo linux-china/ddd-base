@@ -19,11 +19,10 @@ Domain Driven Design base package for Java.
 
 ### Code Structure
 
-Please visit src/test/java for code structure
+Please visit [src/test/java](https://github.com/linux-china/ddd-base/tree/master/src/test/java/org/mvnsearch/demo/domain) for code structure
 
 ### Event Sourcing
 
 Please extends BaseDomainEvent and use ApplicationEventPublisher to publish event.
 
 please refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
-
