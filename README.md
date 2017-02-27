@@ -21,6 +21,8 @@ Domain Driven Design base package for Java.
 
 Please visit [src/test/java](https://github.com/linux-china/ddd-base/tree/master/src/test/java/org/mvnsearch/demo/domain) for code structure
 
+If you use Kotlin to develop application, the structure will be different, please add entity, vo and repository in the same kt file.
+
 ### Event Sourcing
 
 Please extends BaseDomainEvent and use ApplicationEventPublisher to publish event.
