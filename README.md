@@ -1,5 +1,7 @@
 DDD Base
-========================================
+========
+[![](https://jitpack.io/v/linux-china/ddd-base.svg)](https://jitpack.io/#linux-china/ddd-base)
+
 Domain Driven Design base package for Java.
 
 ### How to use?
