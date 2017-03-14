@@ -5,7 +5,7 @@
 
     <groupId>org.mvnsearch.ddd</groupId>
     <artifactId>ddd-base</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>DDD Base</name>
@@ -31,23 +31,6 @@
         <developerConnection>scm:git:ssh://git@github.com:linux-china/ddd-base.git</developerConnection>
         <url>https://github.com/linux-china/ddd-base</url>
     </scm>
-
-    <distributionManagement>
-        <repository>
-            <id>mvnsearch_nexus</id>
-            <name>mvnsearch nexus Releases</name>
-            <url>http://nexus.mvnsearch.org/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>mvnsearch_nexus</id>
-            <name>mvnsearch nexus Snapshots</name>
-            <url>http://nexus.mvnsearch.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <!-- <repository>
-             <id>bintray</id>
-             <url>https://api.bintray.com/maven/linux-china/maven/org.mvnsearch.ddd.ddd-base</url>
-         </repository>-->
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -81,38 +64,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 
 </project>
