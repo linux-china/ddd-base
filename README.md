@@ -2,6 +2,9 @@ DDD Base
 ========================================
 Domain Driven Design base package for Java.
 
+### How to use?
+
+please refer https://jitpack.io/#linux-china/ddd-base/1.0.6 
 
 ### Features
 
