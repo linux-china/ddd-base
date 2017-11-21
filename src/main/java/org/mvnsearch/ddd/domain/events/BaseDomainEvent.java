@@ -30,7 +30,7 @@ public class BaseDomainEvent<T> implements Serializable {
     /**
      * source
      */
-    protected transient Object resource;
+    protected transient Object source;
     /**
      * data
      */
@@ -44,13 +44,13 @@ public class BaseDomainEvent<T> implements Serializable {
         this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object resource) {
-        this.resource = resource;
+    public BaseDomainEvent(Object source) {
+        this.source = source;
         this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object resource, T data) {
-        this.resource = resource;
+    public BaseDomainEvent(Object source, T data) {
+        this.source = source;
         this.data = data;
         this.createdAt = System.currentTimeMillis();
     }
@@ -71,12 +71,12 @@ public class BaseDomainEvent<T> implements Serializable {
         this.type = type;
     }
 
-    public Object getResource() {
-        return resource;
+    public Object getSource() {
+        return source;
     }
 
-    public void setResource(Object resource) {
-        this.resource = resource;
+    public void setSource(Object source) {
+        this.source = source;
     }
 
     public T getData() {
