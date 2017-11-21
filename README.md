@@ -33,3 +33,7 @@ If you use Kotlin to develop application, the structure will be different, pleas
 Please extends BaseDomainEvent and use ApplicationEventPublisher to publish event.
 
 please refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
+
+### References
+
+* CNCF Event Specification: https://github.com/cncf/wg-serverless/tree/master/proposals
