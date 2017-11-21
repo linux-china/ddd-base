@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * domain event
+ * domain event: https://github.com/cncf/wg-serverless/tree/master/proposals/open-events
  *
  * @author linux_china
  */
@@ -26,34 +26,33 @@ public class BaseDomainEvent<T> implements Serializable {
     /**
      * event context
      */
-    protected Map<String, Object> context;
+    protected Map<String, Object> attributes;
     /**
      * source
      */
-    protected transient Object source;
+    protected transient Object resource;
     /**
-     * payload
+     * data
      */
-    protected T payload;
+    protected T data;
     /**
      * System time when the event happened
      */
-    private final long timestamp;
-
+    private final long createdAt;
 
     public BaseDomainEvent() {
-        this.timestamp = System.currentTimeMillis();
+        this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object source) {
-        this.source = source;
-        this.timestamp = System.currentTimeMillis();
+    public BaseDomainEvent(Object resource) {
+        this.resource = resource;
+        this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object source, T payload) {
-        this.source = source;
-        this.payload = payload;
-        this.timestamp = System.currentTimeMillis();
+    public BaseDomainEvent(Object resource, T data) {
+        this.resource = resource;
+        this.data = data;
+        this.createdAt = System.currentTimeMillis();
     }
 
     public String getId() {
@@ -72,34 +71,34 @@ public class BaseDomainEvent<T> implements Serializable {
         this.type = type;
     }
 
-    public Object getSource() {
-        return source;
+    public Object getResource() {
+        return resource;
     }
 
-    public void setSource(Object source) {
-        this.source = source;
+    public void setResource(Object resource) {
+        this.resource = resource;
     }
 
-    public T getPayload() {
-        return payload;
+    public T getData() {
+        return data;
     }
 
-    public void setPayload(T payload) {
-        this.payload = payload;
+    public void setData(T data) {
+        this.data = data;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public long getCreatedAt() {
+        return createdAt;
     }
 
     public Object getAttribute(String name) {
-        return context == null ? null : context.get(name);
+        return attributes == null ? null : attributes.get(name);
     }
 
     public void setAttribute(String name, Object value) {
-        if (context == null) {
-            context = new HashMap<>();
+        if (attributes == null) {
+            attributes = new HashMap<>();
         }
-        this.context.put(name, value);
+        this.attributes.put(name, value);
     }
 }
