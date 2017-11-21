@@ -14,7 +14,7 @@ public class OpenEvent {
     private Object resource;
     private Map<String, Object> attributes;
     private Object data;
-    private String dataContentType = "application/json";
+    private String dataContentType;
     private String specVersion = "0.3";
 
     public String getEventId() {
