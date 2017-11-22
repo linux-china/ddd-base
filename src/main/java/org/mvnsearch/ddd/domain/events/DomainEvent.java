@@ -1,6 +1,5 @@
 package org.mvnsearch.ddd.domain.events;
 
-import org.mvnsearch.ddd.domain.annotations.DomainEvent;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -12,8 +11,7 @@ import java.util.UUID;
  *
  * @author linux_china
  */
-@DomainEvent
-public class BaseDomainEvent<T> implements Serializable {
+public class DomainEvent<T> implements Serializable {
     private static final long serialVersionUID = 5516075349620653482L;
     /**
      * ID
@@ -40,16 +38,16 @@ public class BaseDomainEvent<T> implements Serializable {
      */
     private final long createdAt;
 
-    public BaseDomainEvent() {
+    public DomainEvent() {
         this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object source) {
+    public DomainEvent(Object source) {
         this.source = source;
         this.createdAt = System.currentTimeMillis();
     }
 
-    public BaseDomainEvent(Object source, T data) {
+    public DomainEvent(Object source, T data) {
         this.source = source;
         this.data = data;
         this.createdAt = System.currentTimeMillis();
