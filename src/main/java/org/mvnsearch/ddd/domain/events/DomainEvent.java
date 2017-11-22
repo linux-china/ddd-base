@@ -1,7 +1,6 @@
 package org.mvnsearch.ddd.domain.events;
 
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -11,8 +10,7 @@ import java.util.UUID;
  *
  * @author linux_china
  */
-public class DomainEvent<T> implements Serializable {
-    private static final long serialVersionUID = 5516075349620653482L;
+public class DomainEvent<T> {
     /**
      * ID
      */
