@@ -18,19 +18,19 @@ public class DomainEvent<T> {
     /**
      * event type
      */
-    protected String type;
+    private String type;
     /**
      * event context
      */
-    protected Map<String, Object> attributes;
+    private Map<String, Object> attributes;
     /**
      * source
      */
-    protected transient Object source;
+    private transient Object source;
     /**
      * data
      */
-    protected T data;
+    private T data;
     /**
      * System time when the event happened
      */
@@ -40,14 +40,21 @@ public class DomainEvent<T> {
         this.createdAt = System.currentTimeMillis();
     }
 
-    public DomainEvent(Object source) {
-        this.source = source;
+    public DomainEvent(T data) {
+        this.data = data;
         this.createdAt = System.currentTimeMillis();
     }
 
-    public DomainEvent(Object source, T data) {
-        this.source = source;
+    public DomainEvent(String type, T data) {
+        this.type = type;
         this.data = data;
+        this.createdAt = System.currentTimeMillis();
+    }
+
+    public DomainEvent(String type, T data, Object source) {
+        this.type = type;
+        this.data = data;
+        this.source = source;
         this.createdAt = System.currentTimeMillis();
     }
 
