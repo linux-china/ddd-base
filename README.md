@@ -36,4 +36,4 @@ please refer https://spring.io/blog/2015/02/11/better-application-events-in-spri
 
 ### References
 
-* CNCF Event Specification: https://github.com/cncf/wg-serverless/tree/master/proposals
+* CloudEvents Specification: https://github.com/cloudevents/spec/blob/v0.1/spec.md
