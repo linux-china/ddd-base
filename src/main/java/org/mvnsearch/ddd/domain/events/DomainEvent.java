@@ -65,7 +65,7 @@ public class DomainEvent<T extends Serializable> {
      * Timestamp of when the event happened
      */
     @JsonProperty("eventTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
     private Date eventTime;
 
     public DomainEvent() {
