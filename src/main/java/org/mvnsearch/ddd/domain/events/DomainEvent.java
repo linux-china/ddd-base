@@ -1,5 +1,7 @@
 package org.mvnsearch.ddd.domain.events;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.net.URI;
 import java.util.Date;
@@ -16,42 +18,52 @@ public class DomainEvent<T extends Serializable> {
     /**
      * cloud events version
      */
+    @JsonProperty("cloudEventsVersion")
     private String cloudEventsVersion = "0.1";
     /**
      * event ID
      */
+    @JsonProperty("eventID")
     private String eventID = UUID.randomUUID().toString();
     /**
      * event type: com.example.someevent
      */
+    @JsonProperty("eventType")
     private String eventType;
     /**
      * event type version:
      */
+    @JsonProperty("eventTypeVersion")
     private String eventTypeVersion;
     /**
      * additional metadata
      */
+    @JsonProperty("extensions")
     private Map<String, Serializable> extensions;
     /**
      * event producer
      */
+    @JsonProperty("source")
     private URI source;
     /**
      * content type for data, such as text/plain, application/json
      */
+    @JsonProperty("contentType")
     private String contentType;
     /**
      * The event payload
      */
+    @JsonProperty("data")
     private T data;
     /**
      * A link to the schema that the data attribute adheres to
      */
+    @JsonProperty("schemaURL")
     private URI schemaURL;
     /**
      * Timestamp of when the event happened
      */
+    @JsonProperty("eventTime")
     private Date eventTime;
 
     public DomainEvent() {
