@@ -1,5 +1,6 @@
 package org.mvnsearch.demo.domain.event;
 
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.mvnsearch.ddd.domain.events.DomainEvent;
 import org.mvnsearch.demo.domain.model.Account;
 
@@ -8,6 +9,7 @@ import org.mvnsearch.demo.domain.model.Account;
  *
  * @author linux_china
  */
+@JsonNaming()
 public class AccountEvent extends DomainEvent<Account> {
     public static String CREATED_TYPE = "created";
     public static String BLOCKED_TYPE = "blocked";
