@@ -28,9 +28,9 @@ Please visit [src/test/java](https://github.com/linux-china/ddd-base/tree/master
 
 If you use Kotlin to develop application, the structure will be different, please add entity, vo and repository in the same kt file.
 
-### Event Sourcing
+### Events
 
-Please extends BaseDomainEvent and use ApplicationEventPublisher to publish event.
+Please extend DomainEvent or DomainEventBuilder, then use ApplicationEventPublisher to publish the event.
 
 please refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
 
