@@ -1,6 +1,5 @@
 package org.mvnsearch.ddd.domain.events;
 
-
 import java.io.Serializable;
 import java.net.URI;
 import java.util.Date;
