@@ -64,12 +64,12 @@ public class DomainEventBuilder<T extends Serializable> {
         return this;
     }
 
-    public DomainEventBuilder<T> extensions(Map<String, Serializable> extensions) {
+    public DomainEventBuilder<T> extensions(Map<String, String> extensions) {
         domainEvent.setExtensions(extensions);
         return this;
     }
 
-    public DomainEventBuilder<T> extension(String name, Serializable value) {
+    public DomainEventBuilder<T> extension(String name, String value) {
         domainEvent.setExtension(name, value);
         return this;
     }

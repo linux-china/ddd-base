@@ -40,7 +40,7 @@ public class DomainEvent<T extends Serializable> {
      * additional metadata
      */
     @JsonProperty("extensions")
-    private Map<String, Serializable> extensions;
+    private Map<String, String> extensions;
     /**
      * event producer
      */
@@ -122,11 +122,11 @@ public class DomainEvent<T extends Serializable> {
         this.eventTypeVersion = eventTypeVersion;
     }
 
-    public Map<String, Serializable> getExtensions() {
+    public Map<String, String> getExtensions() {
         return extensions;
     }
 
-    public void setExtensions(Map<String, Serializable> extensions) {
+    public void setExtensions(Map<String, String> extensions) {
         this.extensions = extensions;
     }
 
@@ -174,7 +174,7 @@ public class DomainEvent<T extends Serializable> {
         return extensions == null ? null : extensions.get(name);
     }
 
-    public void setExtension(String name, Serializable value) {
+    public void setExtension(String name, String value) {
         if (extensions == null) {
             extensions = new HashMap<>();
         }
