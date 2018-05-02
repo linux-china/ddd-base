@@ -1,5 +1,6 @@
 package org.mvnsearch.ddd.domain.events;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
@@ -64,6 +65,7 @@ public class DomainEvent<T extends Serializable> {
      * Timestamp of when the event happened
      */
     @JsonProperty("eventTime")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private Date eventTime;
 
     public DomainEvent() {
