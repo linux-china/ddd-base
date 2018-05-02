@@ -1,6 +1,5 @@
 package org.mvnsearch.ddd.domain.events;
 
-import java.io.Serializable;
 import java.net.URI;
 import java.util.Date;
 import java.util.Map;
@@ -10,15 +9,22 @@ import java.util.Map;
  *
  * @author linux_china
  */
-public class DomainEventBuilder<T extends Serializable> {
+public class DomainEventBuilder<T> {
     /**
-     * cloud event
+     * domain event
      */
     private DomainEvent<T> domainEvent;
 
-    public static <K extends Serializable> DomainEventBuilder<K> newInstance() {
+    public static <K> DomainEventBuilder<K> newInstance() {
         DomainEventBuilder<K> builder = new DomainEventBuilder<K>();
         builder.domainEvent = new DomainEvent<K>();
+        return builder;
+    }
+
+    public static DomainEventBuilder<Map<String, Object>> newInstance(Map<String, Object> data) {
+        DomainEventBuilder<Map<String, Object>> builder = new DomainEventBuilder<Map<String, Object>>();
+        builder.domainEvent = new MapDomainEvent();
+        builder.domainEvent.setContentType("application/json");
         return builder;
     }
 

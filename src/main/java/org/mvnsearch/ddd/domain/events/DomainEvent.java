@@ -15,7 +15,7 @@ import java.util.UUID;
  *
  * @author linux_china
  */
-public class DomainEvent<T extends Serializable> {
+public class DomainEvent<T> {
     /**
      * cloud events version
      */
