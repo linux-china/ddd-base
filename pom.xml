@@ -5,7 +5,7 @@
 
     <groupId>com.github.linux-china</groupId>
     <artifactId>ddd-base</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>DDD Base</name>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>1.7.26</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
