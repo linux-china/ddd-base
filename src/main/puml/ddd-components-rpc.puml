@@ -23,16 +23,16 @@ node "domain module" {
       [DomainImpl] -> [Infrastructure]
     }
 }
-package "Published Service Module" {
-   [PublishedService]
-   note right of PublishedService : models\npublished service api
+package "Exposed API Module: Facade pattern" {
+   [XxxFacade]
+   note right of XxxFacade : models\npublished service api
 
 }
 package "Client Module" {
    [XxxClient] #99FF99
    note right of XxxClient : DSL\nSpring Support\nException Handler
 
-   [XxxClient] -> [PublishedService]
+   [XxxClient] -> [XxxFacade]
 }
 
 cloud "App Modules" {
@@ -60,8 +60,8 @@ cloud "App Modules" {
 [Application] -[#0000FF]-> [Event]
 [Application] -[#0000FF]-> [Policy]
 
-[PublishedService] ..> [Application]: RPC
-[PublishedService] <-- [Application]: Maven dependency
+[XxxFacade] ..> [Application]: RPC
+[XxxFacade] <-- [Application]: Maven dependency
 
 [WebApp] ..> [XxxClient]
 [Interface] --> [WebApp]
