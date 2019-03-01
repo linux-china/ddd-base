@@ -24,25 +24,19 @@ public class DomainEventBuilder<T> {
     public static DomainEventBuilder<Map<String, Object>> newInstance(Map<String, Object> data) {
         DomainEventBuilder<Map<String, Object>> builder = new DomainEventBuilder<Map<String, Object>>();
         builder.domainEvent = new MapDomainEvent();
-        builder.domainEvent.setContentType("application/json");
+        builder.domainEvent.setDatacontenttype("application/json");
         return builder;
     }
 
-    public DomainEventBuilder<T> eventID(String eventId) {
-        domainEvent.setEventID(eventId);
+    public DomainEventBuilder<T> id(String eventId) {
+        domainEvent.setId(eventId);
         return this;
     }
 
-    public DomainEventBuilder<T> eventType(String eventType) {
-        domainEvent.setEventType(eventType);
+    public DomainEventBuilder<T> type(String eventType) {
+        domainEvent.setType(eventType);
         return this;
     }
-
-    public DomainEventBuilder<T> eventTypeVersion(String eventTypeVersion) {
-        domainEvent.setEventTypeVersion(eventTypeVersion);
-        return this;
-    }
-
 
     public DomainEventBuilder<T> source(URI source) {
         domainEvent.setSource(source);
@@ -51,7 +45,7 @@ public class DomainEventBuilder<T> {
 
 
     public DomainEventBuilder<T> contentType(String contentType) {
-        domainEvent.setContentType(contentType);
+        domainEvent.setDatacontenttype(contentType);
         return this;
     }
 
@@ -65,8 +59,8 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> eventTime(Date eventTime) {
-        domainEvent.setEventTime(eventTime);
+    public DomainEventBuilder<T> time(Date eventTime) {
+        domainEvent.setTime(eventTime);
         return this;
     }
 
@@ -80,8 +74,8 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> cloudEventsVersion(String cloudEventsVersion) {
-        domainEvent.setCloudEventsVersion(cloudEventsVersion);
+    public DomainEventBuilder<T> spec(String specVersion) {
+        domainEvent.setSpecversion(specVersion);
         return this;
     }
 
