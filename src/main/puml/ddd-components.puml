@@ -14,8 +14,8 @@ node "Domain Module" {
    note right of Shared : XxxSupport\nWrapper\nSpring Integration
 
    package "application package" {
-        [Application]
-        note left of Application : utils,spring
+        [XxxFacade]
+        note left of XxxFacade : facade for external
    }
    package "infrastructure package" {
         [Infrastructure] #Aqua
@@ -32,7 +32,7 @@ cloud "App Modules" {
 }
 
 [Shared] <-- [DomainImpl]
-[Application] <--- [DomainImpl]
+[XxxFacade] <--- [DomainImpl]
 [Repository] ---> [Shared]
 [Repository] --> [Model]
 [Service] -[#0000FF]> [Repository]
@@ -44,13 +44,13 @@ cloud "App Modules" {
 [Factory] ---> [Shared]
 [Event] -[#0000FF]> [Repository]
 [Event] -[#0000FF]> [Factory]
-[Application] -[#0000FF]> [Service]
-[Application] -[#0000FF]> [Event]
-[Application] -[#0000FF]> [Policy]
+[XxxFacade] -[#0000FF]> [Service]
+[XxxFacade] -[#0000FF]> [Event]
+[XxxFacade] -[#0000FF]> [Policy]
 
-[WebApp] ...> [Application]
+[WebApp] ...> [XxxFacade]
 [Interface] --> [WebApp]
-[MobileBackend] ...> [Application]
+[MobileBackend] ...> [XxxFacade]
 [MobileApp] --> [MobileBackend]
 
 skinparam component {
