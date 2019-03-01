@@ -13,7 +13,7 @@ public class AccountEvent extends DomainEvent<Account> {
     public static String BLOCKED_TYPE = "blocked";
 
     public AccountEvent(String type, Account account) {
-        setContentType(type);
+        setDatacontenttype(type);
         setData(account);
     }
 }
