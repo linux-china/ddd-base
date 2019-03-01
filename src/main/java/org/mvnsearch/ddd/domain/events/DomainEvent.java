@@ -19,10 +19,10 @@ import java.util.UUID;
 @JsonIgnoreProperties(value = {"$schema"})
 public class DomainEvent<T> {
     /**
-     * cloud events version
+     * cloud events spec version
      */
     @JsonProperty("specversion")
-    private String specversion = "0.2";
+    private String specVersion = "0.2";
     /**
      * event ID
      */
@@ -47,7 +47,7 @@ public class DomainEvent<T> {
      * content type for data, such as text/plain, application/json
      */
     @JsonProperty("datacontenttype")
-    private String datacontenttype;
+    private String dataContentType;
     /**
      * The event payload
      */
@@ -75,24 +75,24 @@ public class DomainEvent<T> {
     }
 
     public DomainEvent(String type, T data) {
-        this.datacontenttype = type;
+        this.dataContentType = type;
         this.data = data;
         this.time = new Date();
     }
 
     public DomainEvent(String type, T data, URI source) {
-        this.datacontenttype = type;
+        this.dataContentType = type;
         this.data = data;
         this.source = source;
         this.time = new Date();
     }
 
-    public String getSpecversion() {
-        return specversion;
+    public String getSpecVersion() {
+        return specVersion;
     }
 
-    public void setSpecversion(String specversion) {
-        this.specversion = specversion;
+    public void setSpecVersion(String specVersion) {
+        this.specVersion = specVersion;
     }
 
     public String getId() {
@@ -127,12 +127,12 @@ public class DomainEvent<T> {
         this.source = source;
     }
 
-    public String getDatacontenttype() {
-        return datacontenttype;
+    public String getDataContentType() {
+        return dataContentType;
     }
 
-    public void setDatacontenttype(String datacontenttype) {
-        this.datacontenttype = datacontenttype;
+    public void setDataContentType(String dataContentType) {
+        this.dataContentType = dataContentType;
     }
 
     public T getData() {

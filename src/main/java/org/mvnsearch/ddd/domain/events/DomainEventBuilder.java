@@ -24,7 +24,7 @@ public class DomainEventBuilder<T> {
     public static DomainEventBuilder<Map<String, Object>> newInstance(Map<String, Object> data) {
         DomainEventBuilder<Map<String, Object>> builder = new DomainEventBuilder<Map<String, Object>>();
         builder.domainEvent = new MapDomainEvent();
-        builder.domainEvent.setDatacontenttype("application/json");
+        builder.domainEvent.setDataContentType("application/json");
         return builder;
     }
 
@@ -45,7 +45,7 @@ public class DomainEventBuilder<T> {
 
 
     public DomainEventBuilder<T> contentType(String contentType) {
-        domainEvent.setDatacontenttype(contentType);
+        domainEvent.setDataContentType(contentType);
         return this;
     }
 
@@ -75,7 +75,7 @@ public class DomainEventBuilder<T> {
     }
 
     public DomainEventBuilder<T> spec(String specVersion) {
-        domainEvent.setSpecversion(specVersion);
+        domainEvent.setSpecVersion(specVersion);
         return this;
     }
 
