@@ -9,5 +9,5 @@ import java.util.Optional;
  */
 public interface AccountSpec {
 
-    public Optional<Long> isEmailUnique(String email);
+    Optional<Long> isEmailUnique(String email);
 }

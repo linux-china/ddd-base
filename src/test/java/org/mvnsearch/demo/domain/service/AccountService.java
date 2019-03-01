@@ -11,9 +11,9 @@ import org.mvnsearch.demo.domain.model.Account;
 @DomainService
 public interface AccountService {
 
-    public void create(Account account);
+    void create(Account account);
 
-    public void updatePassword(Long accountId, String oldPassword, String newPassword);
+    void updatePassword(Long accountId, String oldPassword, String newPassword);
 
-    public void resetPassword(Long accountId);
+    void resetPassword(Long accountId);
 }

@@ -10,5 +10,5 @@ import org.springframework.context.event.EventListener;
 public interface AccountProcessor {
 
     @EventListener
-    public void handleLogin(LoginEvent event) ;
+    void handleLogin(LoginEvent event);
 }

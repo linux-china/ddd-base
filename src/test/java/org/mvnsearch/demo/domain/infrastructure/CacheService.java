@@ -13,7 +13,7 @@ import java.util.Optional;
 @InfrastructureService
 public interface CacheService {
 
-    public void put(String key, Serializable object);
+    void put(String key, Serializable object);
 
-    public Optional<Serializable> get(String key);
+    Optional<Serializable> get(String key);
 }
