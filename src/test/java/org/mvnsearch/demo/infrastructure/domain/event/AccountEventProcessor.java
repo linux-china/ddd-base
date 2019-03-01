@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.domain.infrastructure.domain.event;
+package org.mvnsearch.demo.infrastructure.domain.event;
 
 import org.mvnsearch.demo.domain.event.AccountEvent;
 import org.springframework.context.event.EventListener;

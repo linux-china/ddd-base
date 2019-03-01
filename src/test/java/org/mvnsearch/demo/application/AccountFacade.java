@@ -1,7 +1,6 @@
-package org.mvnsearch.demo.domain.application;
+package org.mvnsearch.demo.application;
 
 import org.mvnsearch.ddd.application.annotations.ApplicationService;
-import org.mvnsearch.ddd.application.annotations.RemoteFacade;
 import org.mvnsearch.demo.domain.model.Account;
 
 /**
@@ -10,7 +9,6 @@ import org.mvnsearch.demo.domain.model.Account;
  * @author linux_china
  */
 @ApplicationService
-@RemoteFacade
 public interface AccountFacade {
 
     Account findByEmail(String email);

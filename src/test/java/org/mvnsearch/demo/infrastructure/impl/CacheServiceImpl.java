@@ -1,6 +1,6 @@
-package org.mvnsearch.demo.domain.infrastructure.impl;
+package org.mvnsearch.demo.infrastructure.impl;
 
-import org.mvnsearch.demo.domain.infrastructure.CacheService;
+import org.mvnsearch.demo.infrastructure.CacheService;
 
 import java.io.Serializable;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.domain.infrastructure.domain.specification;
+package org.mvnsearch.demo.infrastructure.domain.specification;
 
 import org.mvnsearch.demo.domain.specification.AccountSpec;
 

@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.domain.infrastructure.domain.factory;
+package org.mvnsearch.demo.infrastructure.domain.factory;
 
 import org.mvnsearch.demo.domain.factory.AccountFactory;
 import org.mvnsearch.demo.domain.model.Account;
