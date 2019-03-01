@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * application service annotation
+ * application service annotation, facade pattern
  *
  * @author linux_china
  */
