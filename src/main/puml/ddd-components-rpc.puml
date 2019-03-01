@@ -2,37 +2,36 @@
 
 node "domain module" {
     package "domain package"  {
-        package "model" {
-           [Model] <<Domain>>
-           [Repository] <<Domain>>
-           [Factory] <<Domain>>
-        }
-       [Shared]
-        note right of Shared : XxxSupport, Wrapper
+       [Model] <<Domain>>
+       [Repository] <<Domain>>
+       [Factory] <<Domain>>
        [Service] <<Domain>>
        [Event] <<Domain>>
        [Policy] <<Domain>>
-    }
     package "application package" {
-      [Application]
-      note right of Application : published service implementation
+      [XxxFacadeImpl]
+      note right of XxxFacadeImpl : published service implementation
     }
     package "infrastructure package" {
       [Infrastructure] #Aqua
       [DomainImpl] <<Domain>>
       [DomainImpl] -> [Infrastructure]
+      [DomainImpl] -up-|> [Service]: 逻辑实现
+      [DomainImpl] -up-|> [Repository]: 逻辑实现
+      [DomainImpl] -up-|> [Factory]: 逻辑实现
+      [DomainImpl] -up-|> [Policy]: 逻辑实现
     }
+     }
 }
-package "Exposed API Module: Facade pattern" {
-   [XxxFacade]
-   note right of XxxFacade : models\npublished service api
 
-}
 package "Client Module" {
+    package "Exposed API Module: Facade pattern" {
+       [XxxFacade]
+       note left of XxxFacade : models\npublished service api
+    }
    [XxxClient] #99FF99
    note right of XxxClient : DSL\nSpring Support\nException Handler
-
-   [XxxClient] -> [XxxFacade]
+   [XxxClient] -left-> [XxxFacade]
 }
 
 cloud "App Modules" {
@@ -42,30 +41,30 @@ cloud "App Modules" {
     [MobileApp] <<App>>
 }
 
-[Shared] <-- [DomainImpl]
-[Application] <--- [DomainImpl]
-[Repository] ---> [Shared]
-[Repository] --> [Model]
-[Factory] ---> [Shared]
+[XxxFacadeImpl] <--- [DomainImpl]
 [Service] -[#0000FF]> [Factory]
 [Service] -[#0000FF]> [Repository]
-[Service] -[#0000FF]> [Policy]
+[Service] .[#0000FF]> [Policy]
+[Service] -[#0000FF]up-> [Event]
 [Policy] -[#0000FF]> [Repository]
-[Factory] --> [Model]
-[Event] -[#0000FF]> [Factory]
-[Event] <-[#0000FF]> [Service]
-[Event] -[#0000FF]> [Repository]
+[Repository] -[#0000FF]up-> [Model]
+[Factory] -[#0000FF]up-> [Model]
 
-[Application] -[#0000FF]-> [Service]
-[Application] -[#0000FF]-> [Event]
-[Application] -[#0000FF]-> [Policy]
+[XxxFacadeImpl] -[#0000FF]--> [Service]
+[XxxFacadeImpl] -[#0000FF]--> [Event]
+[XxxFacadeImpl] -[#0000FF]--> [Model]
+[XxxFacadeImpl] -[#0000FF]--> [Policy]
+[XxxFacadeImpl] -[#0000FF]--> [Repository]
+[XxxFacadeImpl] -[#0000FF]----> [Infrastructure]
 
-[XxxFacade] ..> [Application]: RPC
-[XxxFacade] <-- [Application]: Maven dependency
+[XxxFacade] ..> [XxxFacadeImpl]: RPC
+[XxxFacade] <|-- [XxxFacadeImpl]: Logic Implement
 
 [WebApp] ..> [XxxClient]
+[WebApp] ..> [XxxFacade]
 [Interface] --> [WebApp]
 [MobileBackend] ..> [XxxClient]
+[MobileBackend] ..> [XxxFacade]
 [MobileApp] --> [MobileBackend]
 
 skinparam component {
