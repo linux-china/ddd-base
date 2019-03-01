@@ -21,23 +21,18 @@ public class DomainEvent<T> {
     /**
      * cloud events version
      */
-    @JsonProperty("cloudEventsVersion")
-    private String cloudEventsVersion = "0.1";
+    @JsonProperty("specversion")
+    private String specversion = "0.2";
     /**
      * event ID
      */
-    @JsonProperty("eventID")
-    private String eventID = UUID.randomUUID().toString();
+    @JsonProperty("id")
+    private String id = UUID.randomUUID().toString();
     /**
      * event type: com.example.someevent
      */
-    @JsonProperty("eventType")
-    private String eventType;
-    /**
-     * event type version:
-     */
-    @JsonProperty("eventTypeVersion")
-    private String eventTypeVersion;
+    @JsonProperty("type")
+    private String type;
     /**
      * additional metadata
      */
@@ -51,8 +46,8 @@ public class DomainEvent<T> {
     /**
      * content type for data, such as text/plain, application/json
      */
-    @JsonProperty("contentType")
-    private String contentType;
+    @JsonProperty("datacontenttype")
+    private String datacontenttype;
     /**
      * The event payload
      */
@@ -61,67 +56,59 @@ public class DomainEvent<T> {
     /**
      * A link to the schema that the data attribute adheres to
      */
-    @JsonProperty("schemaURL")
+    @JsonProperty("schemaurl")
     private URI schemaURL;
     /**
      * Timestamp of when the event happened
      */
-    @JsonProperty("eventTime")
+    @JsonProperty("time")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
-    private Date eventTime;
+    private Date time;
 
     public DomainEvent() {
-        this.eventTime = new Date();
+        this.time = new Date();
     }
 
     public DomainEvent(T data) {
         this.data = data;
-        this.eventTime = new Date();
+        this.time = new Date();
     }
 
     public DomainEvent(String type, T data) {
-        this.contentType = type;
+        this.datacontenttype = type;
         this.data = data;
-        this.eventTime = new Date();
+        this.time = new Date();
     }
 
     public DomainEvent(String type, T data, URI source) {
-        this.contentType = type;
+        this.datacontenttype = type;
         this.data = data;
         this.source = source;
-        this.eventTime = new Date();
+        this.time = new Date();
     }
 
-    public String getCloudEventsVersion() {
-        return cloudEventsVersion;
+    public String getSpecversion() {
+        return specversion;
     }
 
-    public void setCloudEventsVersion(String cloudEventsVersion) {
-        this.cloudEventsVersion = cloudEventsVersion;
+    public void setSpecversion(String specversion) {
+        this.specversion = specversion;
     }
 
-    public String getEventID() {
-        return eventID;
+    public String getId() {
+        return id;
     }
 
-    public void setEventID(String eventID) {
-        this.eventID = eventID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getEventType() {
-        return eventType;
+    public String getType() {
+        return type;
     }
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
-
-    public String getEventTypeVersion() {
-        return eventTypeVersion;
-    }
-
-    public void setEventTypeVersion(String eventTypeVersion) {
-        this.eventTypeVersion = eventTypeVersion;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Map<String, String> getExtensions() {
@@ -140,12 +127,12 @@ public class DomainEvent<T> {
         this.source = source;
     }
 
-    public String getContentType() {
-        return contentType;
+    public String getDatacontenttype() {
+        return datacontenttype;
     }
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
+    public void setDatacontenttype(String datacontenttype) {
+        this.datacontenttype = datacontenttype;
     }
 
     public T getData() {
@@ -164,12 +151,12 @@ public class DomainEvent<T> {
         this.schemaURL = schemaURL;
     }
 
-    public Date getEventTime() {
-        return eventTime;
+    public Date getTime() {
+        return time;
     }
 
-    public void setEventTime(Date eventTime) {
-        this.eventTime = eventTime;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public Serializable getExtension(String name) {
