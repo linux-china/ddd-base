@@ -5,14 +5,14 @@ import org.mvnsearch.ddd.application.annotations.RemoteFacade;
 import org.mvnsearch.demo.domain.model.Account;
 
 /**
- * account manager
+ * account facade
  *
  * @author linux_china
  */
 @ApplicationService
 @RemoteFacade
-public interface AccountManager {
+public interface AccountFacade {
 
-    public Account findByEmail(String email);
+    Account findByEmail(String email);
 
 }
