@@ -1,6 +1,11 @@
 @startuml
 
 node "domain module" {
+    package "application package" {
+       [XxxFacadeImpl]
+       note right of XxxFacadeImpl : published service implementation
+    }
+
     package "domain package"  {
        [Model] <<Domain>>
        [Repository] <<Domain>>
@@ -8,20 +13,17 @@ node "domain module" {
        [Service] <<Domain>>
        [Event] <<Domain>>
        [Policy] <<Domain>>
-    package "application package" {
-      [XxxFacadeImpl]
-      note right of XxxFacadeImpl : published service implementation
     }
+
     package "infrastructure package" {
-      [Infrastructure] #Aqua
-      [DomainImpl] <<Domain>>
-      [DomainImpl] -> [Infrastructure]
-      [DomainImpl] -up-|> [Service]: 逻辑实现
-      [DomainImpl] -up-|> [Repository]: 逻辑实现
-      [DomainImpl] -up-|> [Factory]: 逻辑实现
-      [DomainImpl] -up-|> [Policy]: 逻辑实现
+       [Infrastructure] #Aqua
+       [DomainImpl] <<Domain>>
+       [DomainImpl] -> [Infrastructure]
+       [DomainImpl] -up-|> [Service]: 逻辑实现
+       [DomainImpl] -up-|> [Repository]: 逻辑实现
+       [DomainImpl] -up-|> [Factory]: 逻辑实现
+       [DomainImpl] -up-|> [Policy]: 逻辑实现
     }
-     }
 }
 
 package "Client Module" {
