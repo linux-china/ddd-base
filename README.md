@@ -13,14 +13,17 @@ please refer https://jitpack.io/#linux-china/ddd-base/1.0.6
 * Annotations
 * base classes for entity, domain event etc
 * domain event
-* spring annotation integration???
 
 # Components
 
 * Data: Entity, VO and Aggregate
 * Behaviour: Repository, Service, Factory and Specification
 * Event
-* Infrasturcture
+* Infrastructure
+
+# Reactive
+
+DDD + Reactive(RSocket) to make context map easy.
 
 # Code Structure
 
@@ -52,7 +55,7 @@ public class LoginEvent extends CloudEvent<String> {
 CloudEvent<String> loginEvent = new CloudEvent<String>("text/plain", "linux_china@hotmail.com");
 ```
 
-* Event Builder
+* Event Builder or reactive processor
 
 ```
 CloudEvent<String> loginEvent = CloudEventBuilder.<String>newInstance().contentType("text/plain").data("linux_china@hotmail.com").build();
@@ -79,4 +82,5 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 
 ### References
 
-* CloudEvents Specification: https://github.com/cloudevents/spec/blob/v0.1/spec.md
+* CloudEvents Specification: https://github.com/cloudevents/spec/blob/master/spec.md
+* Reactive Streams: http://www.reactive-streams.org/
