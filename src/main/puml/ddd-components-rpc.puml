@@ -2,7 +2,7 @@
 
 node "domain module" {
     package "application package" {
-       [XxxFacadeImpl]
+       [XxxFacadeImpl] <<Application>>
        note right of XxxFacadeImpl : published service implementation
     }
 
@@ -16,9 +16,9 @@ node "domain module" {
     }
 
     package "infrastructure package" {
-       [Infrastructure] #Aqua
+       [InfrastructureService] <<Infrastructure>> #Aqua
        [DomainImpl] <<Domain>>
-       [DomainImpl] -> [Infrastructure]
+       [DomainImpl] -> [InfrastructureService]
        [DomainImpl] -up-|> [Service]: 逻辑实现
        [DomainImpl] -up-|> [Repository]: 逻辑实现
        [DomainImpl] -up-|> [Factory]: 逻辑实现
@@ -57,7 +57,7 @@ cloud "App Modules" {
 [XxxFacadeImpl] -[#0000FF]--> [Model]
 [XxxFacadeImpl] -[#0000FF]--> [Policy]
 [XxxFacadeImpl] -[#0000FF]--> [Repository]
-[XxxFacadeImpl] -[#0000FF]----> [Infrastructure]
+[XxxFacadeImpl] -[#0000FF]----> [InfrastructureService]
 
 [XxxFacade] ..> [XxxFacadeImpl]: RPC
 [XxxFacade] <|-- [XxxFacadeImpl]: Logic Implement
