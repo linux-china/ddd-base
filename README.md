@@ -4,15 +4,15 @@ DDD Base
 
 Domain Driven Design base package for Java.
 
-# How to use?
+# How to use it in Java?
 
-please refer https://jitpack.io/#linux-china/ddd-base/1.0.6 
+Please refer https://jitpack.io/#linux-china/ddd-base/1.1.0
 
 # Features
 
 * Annotations
 * base classes for entity, domain event etc
-* domain event
+* domain event: follow cloud event specification
 
 # Components
 
