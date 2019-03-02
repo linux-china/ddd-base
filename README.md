@@ -36,6 +36,8 @@ If you use Kotlin to develop application, the structure will be different, pleas
 Please extend DomainEvent or DomainEventBuilder, then use ApplicationEventPublisher to publish the event.
 please refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
 
+Attention: Spring framework 5.2 will add reactive support:  https://github.com/spring-projects/spring-framework/issues/21831
+
 ### How to create event class
 
 * Extend CloudEvent class:
