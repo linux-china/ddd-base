@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package io.cloudevents.proto;
 
-// allows a map to appear inside `oneof`
+// cloud event proto message
 message CloudEvent {
     string type = 1;
     string specversion = 2;
