@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package io.cloudevents.proto;
+package io.cloudevents.protobuf;
 
 // cloud event proto message
 message CloudEvent {
