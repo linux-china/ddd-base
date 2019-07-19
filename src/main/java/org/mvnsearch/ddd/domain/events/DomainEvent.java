@@ -22,7 +22,7 @@ public class DomainEvent<T> {
      * cloud events spec version
      */
     @JsonProperty("specversion")
-    private String specVersion = "0.2";
+    private String specVersion = "0.3";
     /**
      * event ID
      */
@@ -43,6 +43,10 @@ public class DomainEvent<T> {
      */
     @JsonProperty("source")
     private URI source;
+    /**
+     * indicates which resource the event is about
+     */
+    private String subject;
     /**
      * content type for data, such as text/plain, application/json
      */
@@ -125,6 +129,14 @@ public class DomainEvent<T> {
 
     public void setSource(URI source) {
         this.source = source;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getDataContentType() {
