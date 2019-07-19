@@ -38,6 +38,13 @@ please refer https://spring.io/blog/2015/02/11/better-application-events-in-spri
 
 Attention: Spring framework 5.2 will add reactive support:  https://github.com/spring-projects/spring-framework/issues/21831
 
+Event extensions: 
+
+* Distributed Tracing extension(traceparent, tracestate):  embeds context from Distributed Tracing so that distributed systems can include traces that span an event-driven system.
+* Dataref(dataref): reference another location where this information is stored
+* Partitioning(partitionkey): This extension defines an attribute for use by message brokers and their clients that support partitioning of events, typically for the purpose of scaling.
+* Sequence(sequence): describe the position of an event in the ordered sequence of events produced by a unique event source
+
 ### How to create event class
 
 * Extend CloudEvent class:
