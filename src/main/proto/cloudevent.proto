@@ -11,6 +11,7 @@ message CloudEvent {
     string time = 5;
     string schemaurl = 6;
     string datacontenttype = 7;
+    string subject = 8;
     CloudEventAny data = 19;
     map<string, CloudEventAny> extensions = 20;
 }
