@@ -11,8 +11,9 @@ Please refer https://jitpack.io/#linux-china/ddd-base/1.1.0
 # Features
 
 * Annotations
-* base classes for entity, domain event etc
-* domain event: follow cloud event specification
+* Base classes for entity, domain event etc
+* Domain event: follow CloudEvents specification
+* DDD Reactive: https://www.reactive-streams.org/
 
 # Components
 
@@ -44,6 +45,7 @@ Event extensions:
 * Dataref(dataref): reference another location where this information is stored
 * Partitioning(partitionkey): This extension defines an attribute for use by message brokers and their clients that support partitioning of events, typically for the purpose of scaling.
 * Sequence(sequence): describe the position of an event in the ordered sequence of events produced by a unique event source
+* Sampling(sampledrate): Sampling
 
 ### How to create event class
 
