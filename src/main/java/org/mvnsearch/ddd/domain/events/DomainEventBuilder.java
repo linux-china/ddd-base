@@ -69,7 +69,7 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> extension(String name, String value) {
+    public DomainEventBuilder<T> extension(String name, Object value) {
         domainEvent.setExtension(name, value);
         return this;
     }
