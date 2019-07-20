@@ -37,7 +37,7 @@ public class DomainEvent<T> {
      * additional metadata
      */
     @JsonProperty("extensions")
-    private Map<String, String> extensions;
+    private Map<String, Object> extensions;
     /**
      * event producer
      */
@@ -115,11 +115,11 @@ public class DomainEvent<T> {
         this.type = type;
     }
 
-    public Map<String, String> getExtensions() {
+    public Map<String, Object> getExtensions() {
         return extensions;
     }
 
-    public void setExtensions(Map<String, String> extensions) {
+    public void setExtensions(Map<String, Object> extensions) {
         this.extensions = extensions;
     }
 
@@ -171,11 +171,11 @@ public class DomainEvent<T> {
         this.time = time;
     }
 
-    public Serializable getExtension(String name) {
+    public Object getExtension(String name) {
         return extensions == null ? null : extensions.get(name);
     }
 
-    public void setExtension(String name, String value) {
+    public void setExtension(String name, Object value) {
         if (extensions == null) {
             extensions = new HashMap<>();
         }

@@ -64,7 +64,7 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> extensions(Map<String, String> extensions) {
+    public DomainEventBuilder<T> extensions(Map<String, Object> extensions) {
         domainEvent.setExtensions(extensions);
         return this;
     }
