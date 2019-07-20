@@ -74,6 +74,37 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
+    public DomainEventBuilder<T> dataref(URI dataref) {
+        domainEvent.setExtension("dataref", dataref);
+        return this;
+    }
+
+    public DomainEventBuilder<T> traceparent(String traceparent) {
+        domainEvent.setExtension("traceparent", traceparent);
+        return this;
+    }
+
+    public DomainEventBuilder<T> tracestate(String tracestate) {
+        domainEvent.setExtension("tracestate", tracestate);
+        return this;
+    }
+
+    public DomainEventBuilder<T> partitionkey(String partitionkey) {
+        domainEvent.setExtension("partitionkey", partitionkey);
+        return this;
+    }
+
+    public DomainEventBuilder<T> sampledrate(Integer sampledrate) {
+        domainEvent.setExtension("sampledrate", sampledrate);
+        return this;
+    }
+
+    public DomainEventBuilder<T> sequence(String sequence) {
+        domainEvent.setExtension("sequence", sequence);
+        return this;
+    }
+
+
     public DomainEventBuilder<T> spec(String specVersion) {
         domainEvent.setSpecVersion(specVersion);
         return this;
