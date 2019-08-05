@@ -46,6 +46,7 @@ Event extensions(JavaScript Object):
 * Partitioning(partitionkey): This extension defines an attribute for use by message brokers and their clients that support partitioning of events, typically for the purpose of scaling.
 * Sequence(sequence): describe the position of an event in the ordered sequence of events produced by a unique event source
 * Sampling(sampledrate): Sampling
+* Multi-tenant(tenantId): Multi-tenant system support
 
 CloudEvents JSONSchema: https://github.com/cloudevents/spec/blob/v0.3/spec.json
 
