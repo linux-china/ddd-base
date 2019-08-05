@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junt5.version>5.5.0</junt5.version>
+        <junt5.version>5.5.1</junt5.version>
     </properties>
 
     <developers>
@@ -20,7 +20,7 @@
             <id>linux_china</id>
             <name>Jacky Chan</name>
             <email>libing.chen@gmail.com</email>
-            <url>http://weibo.com/linux2china</url>
+            <url>https://twitter.com/linux_china</url>
             <roles>
                 <role>Developer</role>
             </roles>
