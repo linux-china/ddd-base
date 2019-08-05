@@ -104,6 +104,10 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
+    public DomainEventBuilder<T> tenantId(String tenantId) {
+        domainEvent.setExtension("tenantId", tenantId);
+        return this;
+    }
 
     public DomainEventBuilder<T> spec(String specVersion) {
         domainEvent.setSpecVersion(specVersion);
