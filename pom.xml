@@ -5,7 +5,7 @@
 
     <groupId>com.github.linux-china</groupId>
     <artifactId>ddd-base</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>DDD Base</name>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.1.6.RELEASE</version>
+            <version>2.1.8.RELEASE</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -88,6 +88,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub linux-china Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/linux-china/ddd-base</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
