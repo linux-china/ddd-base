@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junt5.version>5.5.1</junt5.version>
+        <junt5.version>5.5.2</junt5.version>
     </properties>
 
     <developers>
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.26</version>
+            <version>1.7.28</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -93,7 +93,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
