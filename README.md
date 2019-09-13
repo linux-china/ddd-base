@@ -6,7 +6,7 @@ Domain Driven Design base package for Java.
 
 # How to use it in Java?
 
-Please refer https://jitpack.io/#linux-china/ddd-base/1.1.0
+Please refer https://jitpack.io/#linux-china/ddd-base/1.1.1
 
 # Features
 
