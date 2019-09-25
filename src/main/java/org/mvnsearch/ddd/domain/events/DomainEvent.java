@@ -1,10 +1,16 @@
 package org.mvnsearch.ddd.domain.events;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.net.URI;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * domain event from CloudEvents: https://github.com/cloudevents/spec/blob/v1.0-rc1/spec.md
@@ -155,6 +161,9 @@ public class DomainEvent<T> {
 
     public void setDataBase64(String dataBase64) {
         this.dataBase64 = dataBase64;
+        if (data instanceof byte[]) {
+            this.data = (T) Base64.getDecoder().decode(dataBase64);
+        }
     }
 
     public URI getSchemaURL() {
