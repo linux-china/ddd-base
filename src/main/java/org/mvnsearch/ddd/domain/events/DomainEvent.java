@@ -3,10 +3,11 @@ package org.mvnsearch.ddd.domain.events;
 import com.fasterxml.jackson.annotation.*;
 
 import java.net.URI;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
- * domain event from CloudEvents: https://github.com/cloudevents/spec/blob/v0.1/spec.md
+ * domain event from CloudEvents: https://github.com/cloudevents/spec/blob/v1.0-rc1/spec.md
  *
  * @author linux_china
  */
@@ -16,14 +17,14 @@ public class DomainEvent<T> {
      * cloud events spec version
      */
     @JsonProperty("specversion")
-    private String specVersion = "0.3";
+    private String specVersion = "1.0";
     /**
      * event ID
      */
     @JsonProperty("id")
     private String id = UUID.randomUUID().toString();
     /**
-     * event type: com.example.someevent
+     * event type: com.example.SomeEvent
      */
     @JsonProperty("type")
     private String type;
@@ -61,29 +62,28 @@ public class DomainEvent<T> {
      * Timestamp of when the event happened
      */
     @JsonProperty("time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
-    private Date time;
+    private ZonedDateTime time;
 
     public DomainEvent() {
-        this.time = new Date();
+        this.time = ZonedDateTime.now();
     }
 
     public DomainEvent(T data) {
         this.data = data;
-        this.time = new Date();
+        this.time = ZonedDateTime.now();
     }
 
     public DomainEvent(String type, T data) {
         this.dataContentType = type;
         this.data = data;
-        this.time = new Date();
+        this.time = ZonedDateTime.now();
     }
 
     public DomainEvent(String type, T data, URI source) {
         this.dataContentType = type;
         this.data = data;
         this.source = source;
-        this.time = new Date();
+        this.time = ZonedDateTime.now();
     }
 
     public String getSpecVersion() {
@@ -165,11 +165,11 @@ public class DomainEvent<T> {
         this.schemaURL = schemaURL;
     }
 
-    public Date getTime() {
+    public ZonedDateTime getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(ZonedDateTime time) {
         this.time = time;
     }
 
