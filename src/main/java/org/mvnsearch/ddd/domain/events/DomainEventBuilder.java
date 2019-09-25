@@ -44,7 +44,7 @@ public class DomainEventBuilder<T> {
     }
 
 
-    public DomainEventBuilder<T> contentType(String contentType) {
+    public DomainEventBuilder<T> dataContentType(String contentType) {
         domainEvent.setDataContentType(contentType);
         return this;
     }
@@ -54,8 +54,8 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> schemaURL(URI schemaURL) {
-        domainEvent.setSchemaURL(schemaURL);
+    public DomainEventBuilder<T> dataSchema(URI schemaURL) {
+        domainEvent.setDataSchema(schemaURL);
         return this;
     }
 
