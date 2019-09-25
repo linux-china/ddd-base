@@ -39,7 +39,10 @@ public class DomainEventTest {
                 .sequence("11234")
                 .build();
         String jsonText = Json.encode(event);
+        System.out.println(jsonText);
         Assertions.assertFalse(jsonText.contains("\"data\":"));
         Assertions.assertTrue(jsonText.contains("\"data_base64\":"));
+        DomainEvent<byte[]> domainEvent = Json.decodeValue(jsonText, DomainEvent.class);
+        Assertions.assertEquals("good", new String(domainEvent.getData()));
     }
 }
