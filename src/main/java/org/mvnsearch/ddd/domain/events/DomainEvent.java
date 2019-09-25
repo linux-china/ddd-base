@@ -1,9 +1,6 @@
 package org.mvnsearch.ddd.domain.events;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 import java.net.URI;
 import java.time.ZonedDateTime;
@@ -18,6 +15,7 @@ import java.util.UUID;
  * @author linux_china
  */
 @JsonIgnoreProperties(value = {"$schema"})
+@JsonFilter("dataBase64Filter")
 public class DomainEvent<T> {
     /**
      * cloud events spec version
@@ -57,8 +55,6 @@ public class DomainEvent<T> {
      */
     @JsonProperty("data")
     private T data;
-    @JsonProperty("data_base64")
-    private String dataBase64;
     /**
      * A link to the schema that the data attribute adheres to
      */
@@ -145,25 +141,20 @@ public class DomainEvent<T> {
     }
 
     public void setData(T data) {
-        if (data instanceof byte[]) {
-            setDataBytes((byte[]) data);
-        }
         this.data = data;
     }
 
-    public void setDataBytes(byte[] data) {
-        this.dataBase64 = Base64.getEncoder().encodeToString(data);
-    }
-
+    @JsonProperty("data_base64")
     public String getDataBase64() {
-        return dataBase64;
+        if (data != null && data instanceof byte[]) {
+            return Base64.getEncoder().encodeToString((byte[]) data);
+        }
+        return null;
     }
 
+    @JsonAlias({"data_base64"})
     public void setDataBase64(String dataBase64) {
-        this.dataBase64 = dataBase64;
-        if (data instanceof byte[]) {
-            this.data = (T) Base64.getDecoder().decode(dataBase64);
-        }
+        this.data = (T) Base64.getDecoder().decode(dataBase64);
     }
 
     public URI getSchemaURL() {
