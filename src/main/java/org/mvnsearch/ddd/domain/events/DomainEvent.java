@@ -1,15 +1,9 @@
 package org.mvnsearch.ddd.domain.events;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
-import java.io.Serializable;
 import java.net.URI;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * domain event from CloudEvents: https://github.com/cloudevents/spec/blob/v0.1/spec.md
@@ -36,7 +30,6 @@ public class DomainEvent<T> {
     /**
      * additional metadata
      */
-    @JsonProperty("extensions")
     private Map<String, Object> extensions;
     /**
      * event producer
@@ -57,6 +50,8 @@ public class DomainEvent<T> {
      */
     @JsonProperty("data")
     private T data;
+    @JsonProperty("data_base64")
+    private String dataBase64;
     /**
      * A link to the schema that the data attribute adheres to
      */
@@ -66,7 +61,7 @@ public class DomainEvent<T> {
      * Timestamp of when the event happened
      */
     @JsonProperty("time")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
     private Date time;
 
     public DomainEvent() {
@@ -115,14 +110,6 @@ public class DomainEvent<T> {
         this.type = type;
     }
 
-    public Map<String, Object> getExtensions() {
-        return extensions;
-    }
-
-    public void setExtensions(Map<String, Object> extensions) {
-        this.extensions = extensions;
-    }
-
     public URI getSource() {
         return source;
     }
@@ -152,7 +139,22 @@ public class DomainEvent<T> {
     }
 
     public void setData(T data) {
+        if (data instanceof byte[]) {
+            setDataBytes((byte[]) data);
+        }
         this.data = data;
+    }
+
+    public void setDataBytes(byte[] data) {
+        this.dataBase64 = Base64.getEncoder().encodeToString(data);
+    }
+
+    public String getDataBase64() {
+        return dataBase64;
+    }
+
+    public void setDataBase64(String dataBase64) {
+        this.dataBase64 = dataBase64;
     }
 
     public URI getSchemaURL() {
@@ -171,10 +173,20 @@ public class DomainEvent<T> {
         this.time = time;
     }
 
+    @JsonAnyGetter
+    public Map<String, Object> getExtensions() {
+        return extensions;
+    }
+
+    public void setExtensions(Map<String, Object> extensions) {
+        this.extensions = extensions;
+    }
+
     public Object getExtension(String name) {
         return extensions == null ? null : extensions.get(name);
     }
 
+    @JsonAnySetter
     public void setExtension(String name, Object value) {
         if (extensions == null) {
             extensions = new HashMap<>();
