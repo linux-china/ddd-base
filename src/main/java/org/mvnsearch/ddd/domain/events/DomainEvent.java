@@ -61,8 +61,8 @@ public class DomainEvent<T> {
     /**
      * A link to the schema that the data attribute adheres to
      */
-    @JsonProperty("schemaurl")
-    private URI schemaURL;
+    @JsonProperty("dataschema")
+    private URI dataSchema;
     /**
      * Timestamp of when the event happened
      */
@@ -160,12 +160,13 @@ public class DomainEvent<T> {
         this.data = (T) Base64.getDecoder().decode(dataBase64);
     }
 
-    public URI getSchemaURL() {
-        return schemaURL;
+
+    public URI getDataSchema() {
+        return dataSchema;
     }
 
-    public void setSchemaURL(URI schemaURL) {
-        this.schemaURL = schemaURL;
+    public void setDataSchema(URI dataSchema) {
+        this.dataSchema = dataSchema;
     }
 
     public ZonedDateTime getTime() {
