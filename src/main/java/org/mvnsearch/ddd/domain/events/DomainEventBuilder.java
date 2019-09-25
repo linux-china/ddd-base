@@ -1,7 +1,7 @@
 package org.mvnsearch.ddd.domain.events;
 
 import java.net.URI;
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.Map;
 
 /**
@@ -59,7 +59,7 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> time(Date eventTime) {
+    public DomainEventBuilder<T> time(ZonedDateTime eventTime) {
         domainEvent.setTime(eventTime);
         return this;
     }
