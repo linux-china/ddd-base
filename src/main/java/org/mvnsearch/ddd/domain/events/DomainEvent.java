@@ -1,6 +1,8 @@
 package org.mvnsearch.ddd.domain.events;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.mvnsearch.ddd.domain.events.jackson.BytesDataSerializer;
 
 import java.net.URI;
 import java.time.ZonedDateTime;
@@ -15,6 +17,7 @@ import java.util.UUID;
  * @author linux_china
  */
 @JsonIgnoreProperties(value = {"$schema"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonFilter("dataBase64Filter")
 public class DomainEvent<T> {
     /**
