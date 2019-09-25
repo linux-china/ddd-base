@@ -20,9 +20,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import org.mvnsearch.ddd.domain.events.jackson.DomainEventDataFieldFilter;
 import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeDeserializer;
 import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeSerializer;
 
@@ -30,8 +30,10 @@ import java.io.InputStream;
 import java.time.ZonedDateTime;
 
 public final class Json {
-    private static FilterProvider dataFilter = new SimpleFilterProvider().addFilter("dataBase64Filter", SimpleBeanPropertyFilter.serializeAllExcept("data"));
-    private static FilterProvider dataFilter2 = new SimpleFilterProvider().addFilter("dataBase64Filter", SimpleBeanPropertyFilter.serializeAll());
+    /**
+     * Domain Event data field filter
+     */
+    private static FilterProvider domainEventDataFieldFilter = new SimpleFilterProvider().addFilter("DomainEventDataFieldFilter", new DomainEventDataFieldFilter());
 
     public static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -56,12 +58,7 @@ public final class Json {
     @SuppressWarnings("unchecked")
     public static String encode(final DomainEvent event) throws IllegalStateException {
         try {
-            Object data = event.getData();
-            if (data instanceof byte[]) {
-                return MAPPER.writer(dataFilter).writeValueAsString(event);
-            } else {
-                return MAPPER.writer(dataFilter2).writeValueAsString(event);
-            }
+            return MAPPER.writer(domainEventDataFieldFilter).writeValueAsString(event);
         } catch (Exception e) {
             throw new IllegalStateException("Failed to encode as JSON: " + e.getMessage());
         }
