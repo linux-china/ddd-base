@@ -1,8 +1,6 @@
 package org.mvnsearch.ddd.domain.events;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.mvnsearch.ddd.domain.events.jackson.BytesDataSerializer;
 
 import java.net.URI;
 import java.time.ZonedDateTime;
@@ -18,7 +16,7 @@ import java.util.UUID;
  */
 @JsonIgnoreProperties(value = {"$schema"})
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonFilter("dataBase64Filter")
+@JsonFilter("DomainEventDataFieldFilter")
 public class DomainEvent<T> {
     /**
      * cloud events spec version
@@ -147,13 +145,6 @@ public class DomainEvent<T> {
         this.data = data;
     }
 
-    @JsonProperty("data_base64")
-    public String getDataBase64() {
-        if (data != null && data instanceof byte[]) {
-            return Base64.getEncoder().encodeToString((byte[]) data);
-        }
-        return null;
-    }
 
     @JsonAlias({"data_base64"})
     public void setDataBase64(String dataBase64) {
