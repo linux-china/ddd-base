@@ -16,7 +16,7 @@ public class DomainEventTest {
     public void testEncodeDecode() {
         DomainEvent<String> event = DomainEventBuilder.<String>newInstance()
                 .id("xxx")
-                .contentType("text/plain")
+                .dataContentType("text/plain")
                 .data("1234")
                 .source(URI.create("demo"))
                 .type("demo")
@@ -32,7 +32,7 @@ public class DomainEventTest {
     public void testBinaryEvent() {
         DomainEvent<byte[]> event = DomainEventBuilder.<byte[]>newInstance()
                 .id("xxx")
-                .contentType("text/plain")
+                .dataContentType("text/plain")
                 .data("good".getBytes())
                 .source(URI.create("demo"))
                 .type("demo")
