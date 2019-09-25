@@ -19,6 +19,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeDeserializer;
 import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeSerializer;
@@ -27,6 +30,8 @@ import java.io.InputStream;
 import java.time.ZonedDateTime;
 
 public final class Json {
+    private static FilterProvider dataFilter = new SimpleFilterProvider().addFilter("dataBase64Filter", SimpleBeanPropertyFilter.serializeAllExcept("data"));
+    private static FilterProvider dataFilter2 = new SimpleFilterProvider().addFilter("dataBase64Filter", SimpleBeanPropertyFilter.serializeAll());
 
     public static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -53,12 +58,9 @@ public final class Json {
         try {
             Object data = event.getData();
             if (data instanceof byte[]) {
-                event.setData(null);
-                String text = MAPPER.writeValueAsString(event);
-                event.setData(data);
-                return text;
+                return MAPPER.writer(dataFilter).writeValueAsString(event);
             } else {
-                return MAPPER.writeValueAsString(event);
+                return MAPPER.writer(dataFilter2).writeValueAsString(event);
             }
         } catch (Exception e) {
             throw new IllegalStateException("Failed to encode as JSON: " + e.getMessage());
