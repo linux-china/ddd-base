@@ -45,7 +45,7 @@ public final class Json {
         module.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
         MAPPER.registerModule(module);
         // ignore Null fields
-        MAPPER.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        MAPPER.setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
     }
 
     /**
