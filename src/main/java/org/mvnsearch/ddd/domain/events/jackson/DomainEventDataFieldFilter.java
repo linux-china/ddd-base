@@ -29,7 +29,7 @@ public class DomainEventDataFieldFilter extends SimpleBeanPropertyFilter {
     public void serializeAsField(Object pojo, JsonGenerator gen, SerializerProvider prov,
                                  PropertyWriter writer)
             throws Exception {
-        if (pojo instanceof DomainEvent && writer.getName().equals("data")) {
+        if (writer.getName().equals("data")) {
             Object data = ((DomainEvent) pojo).getData();
             if (data instanceof byte[]) {
                 gen.writeStringField("data_base64", Base64.getEncoder().encodeToString((byte[]) data));
