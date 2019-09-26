@@ -25,6 +25,7 @@ public class DomainEventBuilder<T> {
         DomainEventBuilder<Map<String, Object>> builder = new DomainEventBuilder<Map<String, Object>>();
         builder.domainEvent = new MapDomainEvent();
         builder.domainEvent.setDataContentType("application/json");
+        builder.data(data);
         return builder;
     }
 
