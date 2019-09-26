@@ -9,20 +9,32 @@ message CloudEvent {
     string source = 3;
     string id = 4;
     string time = 5;
-    string schemaurl = 6;
+    string dataschema = 6;
     string datacontenttype = 7;
     string subject = 8;
+    string data_base64 = 18;
     CloudEventAny data = 19;
-    map<string, CloudEventAny> extensions = 20;
+    string dataref = 20;
+    string traceparent = 21;
+    string tracestate = 22;
+    string partitionkey = 23;
+    int32 sampledrate = 24;
+    string sequence = 25;
+    string tenantid = 26;
+    string reserved1 = 40;
+    string reserved2 = 41;
+    string reserved3 = 43;
+    string reserved4 = 44;
+    string reserved5 = 45;
 }
 
 message CloudEventAny {
     oneof value {
         string string_value = 1;
-        bytes binary_value = 2;
-        int32 int_value = 3;
-        int64 long_value = 4;
-        double double_value = 5;
-        bool bool_value = 6;
+        int32 int_value = 2;
+        int64 long_value = 3;
+        double double_value = 4;
+        bool bool_value = 5;
+        //map<string,string> map_value = 6;
     }
 }
