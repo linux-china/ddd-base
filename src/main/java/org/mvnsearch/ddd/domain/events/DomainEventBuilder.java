@@ -105,8 +105,8 @@ public class DomainEventBuilder<T> {
         return this;
     }
 
-    public DomainEventBuilder<T> tenantId(String tenantId) {
-        domainEvent.setExtension("tenantId", tenantId);
+    public DomainEventBuilder<T> tenantid(String tenantId) {
+        domainEvent.setExtension("tenantid", tenantId);
         return this;
     }
 
