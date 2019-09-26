@@ -5,7 +5,7 @@ option java_outer_classname = "CloudEventsProto";
 
 
 // cloud event proto message
-message CloudEventPB {
+message CloudEvent {
     string id = 1;
     string specversion = 2;
     string type = 3;
@@ -15,11 +15,11 @@ message CloudEventPB {
     string datacontenttype = 7;
     string subject = 8;
     string data_base64 = 18;
-    CloudEventAny data = 19;
-    map<string, CloudEventAny> extensions = 20;
+    CloudEventAnyValue data = 19;
+    map<string, CloudEventAnyValue> extensions = 20;
 }
 
-message CloudEventAny {
+message CloudEventAnyValue {
     oneof value {
         string string_value = 1;
         int32 int_value = 2;
