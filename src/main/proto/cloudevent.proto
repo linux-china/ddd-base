@@ -1,6 +1,8 @@
 syntax = "proto3";
 
 package io.cloudevents.protobuf;
+option java_outer_classname = "CloudEventsProto";
+
 
 // cloud event proto message
 message CloudEventPB {
