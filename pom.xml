@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jackson.version>2.10.0</jackson.version>
-        <junt5.version>5.5.2</junt5.version>
+        <jackson.version>2.10.3</jackson.version>
+        <junt5.version>5.6.0</junt5.version>
     </properties>
 
     <developers>
