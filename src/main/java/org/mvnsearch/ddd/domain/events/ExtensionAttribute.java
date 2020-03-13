@@ -64,7 +64,7 @@ public enum ExtensionAttribute {
      */
     SIGNATURE("signature");
 
-    private String key;
+    private final String key;
 
     ExtensionAttribute(String key) {
         this.key = key;
