@@ -18,16 +18,11 @@ package org.mvnsearch.ddd.domain.events;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import org.mvnsearch.ddd.domain.events.jackson.DomainEventDataFieldFilter;
-import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeDeserializer;
-import org.mvnsearch.ddd.domain.events.jackson.ZonedDateTimeSerializer;
 
 import java.io.InputStream;
-import java.time.ZonedDateTime;
 
 public final class Json {
     /**
@@ -38,13 +33,7 @@ public final class Json {
     public static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
-        // add Jackson datatype for ZonedDateTime
-        MAPPER.registerModule(new Jdk8Module());
-        final SimpleModule module = new SimpleModule();
-        module.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
-        module.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
-        MAPPER.registerModule(module);
-        // ignore Null fields
+        MAPPER.findAndRegisterModules();
         MAPPER.setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
     }
 
