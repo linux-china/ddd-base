@@ -76,37 +76,57 @@ public class DomainEventBuilder<T> {
     }
 
     public DomainEventBuilder<T> dataref(URI dataref) {
-        domainEvent.setExtension("dataref", dataref);
+        domainEvent.setExtension(ExtensionAttribute.DATA_REF.getKey(), dataref);
         return this;
     }
 
     public DomainEventBuilder<T> traceparent(String traceparent) {
-        domainEvent.setExtension("traceparent", traceparent);
+        domainEvent.setExtension(ExtensionAttribute.TRACE_PARENT.getKey(), traceparent);
         return this;
     }
 
     public DomainEventBuilder<T> tracestate(String tracestate) {
-        domainEvent.setExtension("tracestate", tracestate);
+        domainEvent.setExtension(ExtensionAttribute.TRACE_STATE.getKey(), tracestate);
+        return this;
+    }
+
+    public DomainEventBuilder<T> totraceid(String totraceid) {
+        domainEvent.setExtension(ExtensionAttribute.TO_TRACE_ID.getKey(), totraceid);
+        return this;
+    }
+
+    public DomainEventBuilder<T> toppanid(String toSpanId) {
+        domainEvent.setExtension(ExtensionAttribute.TO_SPAN_ID.getKey(), toSpanId);
         return this;
     }
 
     public DomainEventBuilder<T> partitionkey(String partitionkey) {
-        domainEvent.setExtension("partitionkey", partitionkey);
+        domainEvent.setExtension(ExtensionAttribute.PARTITION_KEY.getKey(), partitionkey);
         return this;
     }
 
     public DomainEventBuilder<T> sampledrate(Integer sampledrate) {
-        domainEvent.setExtension("sampledrate", sampledrate);
+        domainEvent.setExtension(ExtensionAttribute.SAMPLED_RATE.getKey(), sampledrate);
         return this;
     }
 
     public DomainEventBuilder<T> sequence(String sequence) {
-        domainEvent.setExtension("sequence", sequence);
+        domainEvent.setExtension(ExtensionAttribute.SEQUENCE.getKey(), sequence);
         return this;
     }
 
     public DomainEventBuilder<T> tenantid(String tenantId) {
-        domainEvent.setExtension("tenantid", tenantId);
+        domainEvent.setExtension(ExtensionAttribute.TENANT_ID.getKey(), tenantId);
+        return this;
+    }
+
+    public DomainEventBuilder<T> signature(String signature) {
+        domainEvent.setExtension(ExtensionAttribute.SIGNATURE.getKey(), signature);
+        return this;
+    }
+
+    public DomainEventBuilder<T> routing(String routing) {
+        domainEvent.setExtension(ExtensionAttribute.ROUTING.getKey(), routing);
         return this;
     }
 
