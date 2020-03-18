@@ -11,5 +11,5 @@ import org.mvnsearch.demo.domain.model.Account;
 @DomainFactory
 public interface AccountFactory {
 
-    public Account createFromWechat(String wechatXml);
+    Account createFromWechat(String wechatXml);
 }

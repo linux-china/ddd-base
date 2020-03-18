@@ -10,9 +10,9 @@ import org.mvnsearch.ddd.domain.annotations.DomainRepository;
 @DomainRepository
 public interface AccountRepository {
 
-    public void create(Account account);
+    void create(Account account);
 
-    public void update(Account account);
+    void update(Account account);
 
-    public Account findOne(long id);
+    Account findOne(long id);
 }
