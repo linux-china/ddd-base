@@ -8,13 +8,7 @@ import org.mvnsearch.ddd.domain.annotations.DomainAggregate;
  * @author linux_china
  */
 @DomainAggregate
-public interface BaseDomainAggregate<ID, ROOT extends BaseDomainEntity<ID>> extends BaseModel {
-    /**
-     * get aggregate root
-     *
-     * @return root object
-     */
-    ROOT getRoot();
+public interface BaseDomainAggregate<ID> extends BaseModel {
 
     /**
      * get entity id
