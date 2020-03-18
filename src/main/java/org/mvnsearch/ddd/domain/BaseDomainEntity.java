@@ -8,11 +8,11 @@ import org.mvnsearch.ddd.domain.annotations.DomainEntity;
  * @author linux_china
  */
 @DomainEntity
-public interface BaseDomainEntity<ID> extends BaseModel {
+public interface BaseDomainEntity<ID> extends Identifiable<ID> {
     /**
      * get entity id
      *
      * @return entity id
      */
-    public ID getId();
+    ID getId();
 }
