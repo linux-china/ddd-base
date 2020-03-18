@@ -98,3 +98,4 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 
 * CloudEvents Specification: https://github.com/cloudevents/spec/blob/master/spec.md
 * Reactive Streams: http://www.reactive-streams.org/
+* DDD Reference: https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf
