@@ -99,3 +99,5 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 * CloudEvents Specification: https://github.com/cloudevents/spec/blob/master/spec.md
 * Reactive Streams: http://www.reactive-streams.org/
 * DDD Reference: https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf
+* ddd-4-java: Base classes for Domain Driven Design with Java  https://github.com/fuinorg/ddd-4-java
+* jDDD: Libraries to help developers express DDD building blocks in Java code  https://github.com/odrotbohm/jddd
