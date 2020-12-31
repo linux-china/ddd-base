@@ -19,8 +19,9 @@ Please refer https://jitpack.io/#linux-china/ddd-base/1.1.1
 
 * Data: Entity, VO and Aggregate
 * Behaviour: Repository, Service, Factory and Specification
-* Event
+* Event: Follow CloudEvents spec
 * Infrastructure
+* CQRS interfaces for command & query
 
 # Reactive
 
