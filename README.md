@@ -65,7 +65,7 @@ public class LoginEvent extends CloudEvent<String> {
 }
 ```
 
-* Create object directly
+* Create an event directly
 ```
 CloudEvent<String> loginEvent = new CloudEvent<String>("text/plain", "linux_china@hotmail.com");
 ```
@@ -79,6 +79,7 @@ CloudEvent<String> loginEvent = CloudEventBuilder.<String>newInstance().contentT
 ### ObjectMapper
 
 * ObjectMapper creation
+
 ```
 ObjectMapper objectMapper = new ObjectMapper();
 objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -103,3 +104,5 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 * ddd-4-java: Base classes for Domain Driven Design with Java  https://github.com/fuinorg/ddd-4-java
 * jMolecules – Architectural abstractions for Java https://github.com/xmolecules/jmolecules
 * Domain-Driven Design Crew: https://github.com/ddd-crew
+* What is Event Sourcing? https://www.eventstore.com/blog/what-is-event-sourcing
+* Event Sourcing and CQRS: https://www.eventstore.com/blog/event-sourcing-and-cqrs
