@@ -12,7 +12,7 @@ Please refer https://jitpack.io/#linux-china/ddd-base/1.1.1
 
 * Annotations
 * Base classes for entity, domain event etc
-* Domain event: follow CloudEvents specification
+* Domain event: follow CloudEvents specification and CloudEvent convert support
 * DDD Reactive: https://www.reactive-streams.org/
 
 # Components
@@ -106,3 +106,4 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 * Domain-Driven Design Crew: https://github.com/ddd-crew
 * What is Event Sourcing? https://www.eventstore.com/blog/what-is-event-sourcing
 * Event Sourcing and CQRS: https://www.eventstore.com/blog/event-sourcing-and-cqrs
+* CQRS Document: https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf
