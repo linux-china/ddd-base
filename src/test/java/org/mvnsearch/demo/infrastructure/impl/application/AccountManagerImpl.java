@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.infrastructure.domain.application;
+package org.mvnsearch.demo.infrastructure.impl.application;
 
 import org.mvnsearch.demo.application.AccountFacade;
 import org.mvnsearch.demo.domain.model.Account;
