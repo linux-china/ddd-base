@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.infrastructure.impl;
+package org.mvnsearch.demo.infrastructure.impl.infra;
 
 import org.mvnsearch.demo.infrastructure.CacheService;
 
