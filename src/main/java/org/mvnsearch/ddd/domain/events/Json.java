@@ -89,6 +89,23 @@ public final class Json {
         }
     }
 
+
+    public static byte[] encodePOJOAsBytes(final Object pojo) throws IllegalStateException {
+        try {
+            return MAPPER.writeValueAsBytes(pojo);
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to encode as JSON: " + e.getMessage());
+        }
+    }
+
+    public static <T> T decodePOJO(final byte[] bytes, Class<T> clazz) throws IllegalStateException {
+        try {
+            return MAPPER.readValue(bytes, clazz);
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to encode as JSON: " + e.getMessage());
+        }
+    }
+
     /**
      * Decode a given JSON string to a POJO of the given type.
      *
