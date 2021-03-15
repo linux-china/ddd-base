@@ -1,8 +1,13 @@
 package org.mvnsearch.ddd.domain.events;
 
 import com.fasterxml.jackson.annotation.*;
+import io.cloudevents.CloudEvent;
+import io.cloudevents.CloudEventData;
+import io.cloudevents.core.v1.CloudEventBuilder;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.HashMap;
@@ -187,5 +192,70 @@ public class DomainEvent<T> {
             extensions = new HashMap<>();
         }
         this.extensions.put(name, value);
+    }
+
+    /**
+     * convert DomainEvent to CloudEvent
+     * @return CloudEvent
+     */
+    public CloudEvent toCloudEvent() {
+        CloudEventBuilder cloudEventBuilder = new CloudEventBuilder()
+                .withId(this.id)
+                .withType(this.type)
+                .withSource(this.source)
+                .withSubject(this.subject)
+                .withDataContentType(this.dataContentType)
+                .withDataSchema(this.dataSchema)
+                .withTime(this.time.toOffsetDateTime());
+        if (this.extensions != null) {
+            for (Map.Entry<String, Object> entry : extensions.entrySet()) {
+                cloudEventBuilder.withExtension(entry.getKey(), entry.getValue().toString());
+            }
+        }
+        if (this.data != null) {
+            if (data instanceof byte[]) {
+                cloudEventBuilder.withData((byte[]) this.data);
+            } else {
+                cloudEventBuilder.withData(Json.encodePOJOAsBytes(this.data));
+            }
+        }
+        return cloudEventBuilder.build();
+    }
+
+    /**
+     * construct domain event from CloudEvent by data content type:  text/* to String, application/json to POJO/Map, other to byte[]
+     * @param cloudEvent cloudEvent
+     * @param dataClass  data class, such String, POJO, byte[].class
+     * @param <T> generic type
+     * @return  domain event
+     */
+    public static <T> DomainEvent<T> fromCloudEvent(CloudEvent cloudEvent, Class<T> dataClass) {
+        DomainEvent<T> domainEvent = new DomainEvent<>();
+        domainEvent.setId(cloudEvent.getId());
+        domainEvent.setType(cloudEvent.getType());
+        domainEvent.setSource(cloudEvent.getSource());
+        domainEvent.setSubject(cloudEvent.getSubject());
+        domainEvent.setDataSchema(cloudEvent.getDataSchema());
+        OffsetDateTime time = cloudEvent.getTime();
+        if (time != null) {
+            domainEvent.setTime(time.toZonedDateTime());
+        }
+        for (String extensionName : cloudEvent.getExtensionNames()) {
+            domainEvent.setExtension(extensionName, cloudEvent.getExtension(extensionName));
+        }
+        String dataContentType = cloudEvent.getDataContentType();
+        CloudEventData cloudEventData = cloudEvent.getData();
+        if (dataContentType != null && cloudEventData != null) {
+            domainEvent.setDataContentType(cloudEvent.getDataContentType());
+            if (dataContentType.startsWith("text/")) {
+                //noinspection unchecked
+                domainEvent.setData((T) new String(cloudEventData.toBytes(), StandardCharsets.UTF_8));
+            } else if (dataContentType.startsWith("application/json")) {
+                domainEvent.setData(Json.decodePOJO(cloudEventData.toBytes(), dataClass));
+            } else {
+                domainEvent.setData((T)cloudEventData.toBytes());
+            }
+        }
+        return domainEvent;
     }
 }
