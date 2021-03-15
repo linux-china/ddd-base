@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.infrastructure.domain.model;
+package org.mvnsearch.demo.infrastructure.impl.domain.model;
 
 import org.mvnsearch.demo.domain.model.Account;
 import org.mvnsearch.demo.domain.model.AccountRepository;
