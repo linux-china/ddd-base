@@ -102,7 +102,7 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 * Reactive Streams: http://www.reactive-streams.org/
 * DDD Reference: https://domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf
 * ddd-4-java: Base classes for Domain Driven Design with Java  https://github.com/fuinorg/ddd-4-java
-* jMolecules – Architectural abstractions for Java https://github.com/xmolecules/jmolecules
+* jMolecules – Architectural abstractions for Java with DDD concepts https://github.com/xmolecules/jmolecules
 * Domain-Driven Design Crew: https://github.com/ddd-crew
 * What is Event Sourcing? https://www.eventstore.com/blog/what-is-event-sourcing
 * Event Sourcing and CQRS: https://www.eventstore.com/blog/event-sourcing-and-cqrs
