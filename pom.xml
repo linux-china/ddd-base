@@ -5,7 +5,7 @@
 
     <groupId>org.mvnsearch</groupId>
     <artifactId>ddd-base</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>DDD Base</name>
@@ -14,7 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jackson.version>2.12.0</jackson.version>
+        <jackson.version>2.12.2</jackson.version>
         <junt5.version>5.7.1</junt5.version>
     </properties>
 
