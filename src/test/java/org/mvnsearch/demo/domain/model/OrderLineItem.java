@@ -1,12 +1,12 @@
 package org.mvnsearch.demo.domain.model;
 
-import org.mvnsearch.ddd.domain.annotations.DomainValueObject;
+import org.mvnsearch.ddd.domain.annotations.ValueObject;
 
 /**
  * Order's LineItem: Value Object
  *
  * @author linux_china
  */
-@DomainValueObject
+@ValueObject
 public class OrderLineItem {
 }
