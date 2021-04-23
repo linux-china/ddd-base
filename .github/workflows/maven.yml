@@ -21,5 +21,9 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 8
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4
+        with:
+          maven-version: 3.8.1
       - name: Build with Maven
         run: mvn -B -DskipTests package --file pom.xml
