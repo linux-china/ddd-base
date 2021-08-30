@@ -1,6 +1,6 @@
 DDD Base
 ========
-!["Building Status"](https://img.shields.io/github/workflow/status/linux-china/ddd-base/Java%20CI%20with%20Maven?label=Github%20Actions)
+!["Building Status"](https://img.shields.io/github/workflow/status/linux-china/ddd-base/Java%20CI%20with%20Maven)
 
 Domain Driven Design base package for Java.
 
