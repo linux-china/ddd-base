@@ -35,8 +35,8 @@ If you use Kotlin to develop application, the structure will be different, pleas
 
 # Events
 
-Please extend DomainEvent or DomainEventBuilder, then use ApplicationEventPublisher to publish the event.
-please refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
+Please extend DomainEvent or DomainEventBuilder, then use ApplicationEventPublisher to publish the event. please
+refer https://spring.io/blog/2015/02/11/better-application-events-in-spring-framework-4-2
 
 Attention: Spring framework 5.2 will add reactive support:  https://github.com/spring-projects/spring-framework/issues/21831
 
@@ -44,7 +44,8 @@ Event extensions(JavaScript Object):
 
 * Distributed Tracing extension(traceparent, tracestate):  embeds context from Distributed Tracing so that distributed systems can include traces that span an event-driven system.
 * Dataref(dataref): reference another location where this information is stored
-* Partitioning(partitionkey): This extension defines an attribute for use by message brokers and their clients that support partitioning of events, typically for the purpose of scaling.
+* Partitioning(partitionkey): This extension defines an attribute for use by message brokers and their clients that support partitioning of events, typically for the purpose of
+  scaling.
 * Sequence(sequence): describe the position of an event in the ordered sequence of events produced by a unique event source
 * Sampling(sampledrate): Sampling
 * Multi-tenant(tenantId): Multi-tenant system support
@@ -54,6 +55,7 @@ CloudEvents JSONSchema: https://github.com/cloudevents/spec/blob/v0.3/spec.json
 ### How to create event class
 
 * Extend CloudEvent class:
+
 ```
 public class LoginEvent extends CloudEvent<String> {
 
@@ -66,6 +68,7 @@ public class LoginEvent extends CloudEvent<String> {
 ```
 
 * Create an event directly
+
 ```
 CloudEvent<String> loginEvent = new CloudEvent<String>("text/plain", "linux_china@hotmail.com");
 ```
@@ -74,6 +77,30 @@ CloudEvent<String> loginEvent = new CloudEvent<String>("text/plain", "linux_chin
 
 ```
 CloudEvent<String> loginEvent = CloudEventBuilder.<String>newInstance().contentType("text/plain").data("linux_china@hotmail.com").build();
+```
+
+* Non-blocking Event Listener: https://github.com/spring-projects/spring-framework/issues/21831
+
+```java
+
+@Component
+public class MyListener {
+
+    @EventListener
+    public Mono<Void> handleContextRefresh(ContextRefreshedEvent event) {
+        ...
+    }
+
+    @EventListener
+    public Flux<MyBusinessResponseEvent> handleBusinessEvent(MyBusinessEvent event) {
+        ...
+    }
+
+    @EventListener
+    public CompletableFuture<Void> handleBusinessEvent(MyOtherBusinessEvent event) {
+        ...
+    }
+}
 ```
 
 ### ObjectMapper
@@ -87,11 +114,13 @@ objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 ```
 
 * write as String
+
 ```
 objectMapper.writeValueAsString(loginEvent);
 ```
 
 * read from json text
+
 ```
 objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 ```
