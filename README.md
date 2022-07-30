@@ -136,3 +136,4 @@ objectMapper.readValue(jsonText, new TypeReference<CloudEvent<String>>() {});
 * What is Event Sourcing? https://www.eventstore.com/blog/what-is-event-sourcing
 * Event Sourcing and CQRS: https://www.eventstore.com/blog/event-sourcing-and-cqrs
 * CQRS Document: https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf
+* remesh: a DDD framework for large and complex TypeScript/JavaScript applications - https://github.com/remesh-js/remesh
