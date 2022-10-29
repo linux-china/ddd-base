@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.infrastructure.impl.domain.service;
+package org.mvnsearch.demo.impl.domain.service;
 
 import org.mvnsearch.demo.domain.event.AccountEvent;
 import org.mvnsearch.demo.domain.model.Account;
