@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.infrastructure;
+package org.mvnsearch.demo.domain.infra;
 
 import org.mvnsearch.ddd.infrastructure.annotations.InfrastructureService;
 
