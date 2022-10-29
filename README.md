@@ -56,7 +56,7 @@ CloudEvents JSONSchema: https://github.com/cloudevents/spec/blob/v0.3/spec.json
 
 * Extend CloudEvent class:
 
-```
+```java
 public class LoginEvent extends CloudEvent<String> {
 
     public LoginEvent(String email, String ip) {
@@ -88,17 +88,17 @@ public class MyListener {
 
     @EventListener
     public Mono<Void> handleContextRefresh(ContextRefreshedEvent event) {
-        ...
+        //...
     }
 
     @EventListener
     public Flux<MyBusinessResponseEvent> handleBusinessEvent(MyBusinessEvent event) {
-        ...
+        //...
     }
 
     @EventListener
     public CompletableFuture<Void> handleBusinessEvent(MyOtherBusinessEvent event) {
-        ...
+        //...
     }
 }
 ```
