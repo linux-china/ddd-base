@@ -1,4 +1,4 @@
-package org.mvnsearch.demo.application;
+package org.mvnsearch.demo.application.dubbo;
 
 import org.mvnsearch.ddd.application.annotations.ApplicationService;
 import org.mvnsearch.demo.domain.model.Account;
