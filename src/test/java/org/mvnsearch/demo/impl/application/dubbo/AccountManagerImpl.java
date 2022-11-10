@@ -1,6 +1,6 @@
-package org.mvnsearch.demo.impl.application;
+package org.mvnsearch.demo.impl.application.dubbo;
 
-import org.mvnsearch.demo.application.AccountFacade;
+import org.mvnsearch.demo.application.dubbo.AccountFacade;
 import org.mvnsearch.demo.domain.model.Account;
 
 /**
